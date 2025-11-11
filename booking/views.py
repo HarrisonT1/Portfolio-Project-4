@@ -11,4 +11,4 @@ def CreateBooking(request):
             return redirect('booking_list')
     else:
         form = BookingForm()
-    return render(request, 'booking_template.html', {'form': form})
+    return render(request, 'booking/booking_template.html', {'form': form})
