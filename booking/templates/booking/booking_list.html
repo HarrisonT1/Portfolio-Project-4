@@ -8,10 +8,10 @@
 <body>
     <h1>Current Bookings</h1>
 
-    {% if bookings is True %}
+    {% for booking in bookings %}
         <div>
             {{ booking.first_name }}
         </div>
-    {% endif %}
+    {% endfor %}
 </body>
 </html>
