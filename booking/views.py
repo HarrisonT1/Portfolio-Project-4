@@ -22,5 +22,5 @@ def CreateBooking(request):
 
 
 def BookingList(request):
-    bookings = Booking.objects.all()
+    bookings = Booking.objects.all().filter(user=request.user)
     return render(request, 'booking/booking_list.html', {'bookings': bookings})
