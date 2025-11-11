@@ -12,3 +12,6 @@ class booking(models.Model):
     booking_time = models.TimeField()
     comments = models.TextField(blank=True)
     number_of_people = models.PositiveIntegerField()
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name} booked for {self.booking_time} on {self.booking_date}"
