@@ -13,4 +13,4 @@ def Profile(request):
 @login_required
 def BookingList(request):
     bookings = Booking.objects.all().filter(user=request.user)
-    return render(request, 'booking/booking_list.html', {'bookings': bookings})
+    return render(request, 'profile_app/booking_list.html', {'bookings': bookings})
