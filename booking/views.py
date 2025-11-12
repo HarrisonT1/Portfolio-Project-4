@@ -14,7 +14,7 @@ def CreateBooking(request):
             booking = form.save(commit=False)
             booking.user = request.user
             booking.save()
-            return HttpResponseRedirect('/bookings')
+            return HttpResponseRedirect('/profile/bookings/')
     else:
         form = BookingForm()
     return render(request, 'booking/booking_template.html', {'form': form})
