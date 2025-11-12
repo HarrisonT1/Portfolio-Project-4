@@ -7,11 +7,31 @@
 </head>
 <body>
     <h1>Current Bookings</h1>
-
-    {% for booking in bookings %}
-        <div>
-            {{ booking.first_name }}
-        </div>
-    {% endfor %}
+    {% if bookings %}
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Booking Date</th>
+                <th>Booking Time</th>
+                <th>guests</th>
+                <th>Comments</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for booking in bookings %}
+                <tr>
+                    <td>{{ booking.first_name }} {{ booking.last_name }}</td>
+                    <td>{{ booking.email }}</td>
+                    <td>{{ booking.booking_date }}</td>
+                    <td>{{ booking.booking_time }}</td>
+                    <td>{{ booking.number_of_people }}</td>
+                    <td>{{ booking.comments }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
 </body>
 </html>
