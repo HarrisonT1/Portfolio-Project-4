@@ -24,4 +24,4 @@ def CreateBooking(request):
 @login_required
 def BookingSuccess(request, booking_id):
     booking = get_object_or_404(Booking, booking_id=booking_id, user=request.user)
-    return render(request, 'profile_app/booking_details.html', {'booking': booking})
+    return render(request, 'booking/booking_success.html', {'booking': booking})
