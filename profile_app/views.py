@@ -7,10 +7,6 @@ from booking.models import Booking
 # Create your views here.
 
 
-def Profile(request):
-    return HttpResponse("Hello, World!")
-
-
 @login_required
 def BookingList(request):
     bookings = Booking.objects.all().filter(user=request.user)
