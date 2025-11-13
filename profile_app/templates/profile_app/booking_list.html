@@ -35,6 +35,11 @@
                             <button type="button">View</button>
                         </a>
                     </td>
+                    <td>
+                        <a href="{% url 'booking_cancel' booking.booking_id %}">
+                            <button type="button">Cancel</button>
+                        </a>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>

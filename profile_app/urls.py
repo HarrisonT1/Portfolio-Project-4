@@ -4,4 +4,5 @@ from . import views  # import views.py from the current directory
 urlpatterns = [
     path('profile/bookings/', views.BookingList, name='booking_list'),
     path('profile/bookings/<str:booking_id>/', views.BookingDetails, name='booking_details'),
+    path('profile/bookings/<str:booking_id>/cancel', views.BookingCancel, name='booking_cancel'),
 ]
