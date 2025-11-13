@@ -36,6 +36,7 @@ def BookingEdit(request, booking_id):
 
     if request.method == 'POST':
         if form.is_valid():
+            form.save()
 
             # Add code to reset approval from staff member once staff app is created
 
@@ -48,4 +49,4 @@ def BookingEdit(request, booking_id):
         'form': form,
         'booking': booking
     }
-    return render(request, 'profile_app/booking_edit', context)
+    return render(request, 'profile_app/booking_edit.html', context)
