@@ -30,6 +30,11 @@
                     <td>{{ booking.number_of_people }}</td>
                     <td>{{ booking.comments }}</td>
                     <td>{{ booking.booking_id }}</td>
+                    <td>
+                        <a href="{% url 'booking_details' booking.booking_id %}">
+                            <button type="button">View</button>
+                        </a>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>
