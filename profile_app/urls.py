@@ -5,4 +5,5 @@ urlpatterns = [
     path('profile/bookings/', views.BookingList, name='booking_list'),
     path('profile/bookings/<str:booking_id>/', views.BookingDetails, name='booking_details'),
     path('profile/bookings/<str:booking_id>/cancel', views.BookingCancel, name='booking_cancel'),
+    path('profile/bookings/<str:booking_id>/edit', views.BookingEdit, name='booking_edit'),
 ]
