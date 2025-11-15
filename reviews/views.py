@@ -1,9 +1,11 @@
+
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from .forms import ReviewForm
 
 # Create your views here.
 
-
+@login_required
 def CreateReview(request):
     if request.method == "POST":
         form = ReviewForm(request.POST)
