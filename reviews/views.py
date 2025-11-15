@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from .forms import ReviewForm
-from .models import Review
 
 # Create your views here.
 
@@ -8,10 +7,12 @@ from .models import Review
 def CreateReview(request):
     if request.method == "POST":
         form = ReviewForm(request.POST)
-        if form.is_valid:
+        if form.is_valid():
             review = form.save(commit=False)
             review.user = request.user
             review.save()
-            return redirect('reviews')
+            return redirect('create_review')
     else:
         form = ReviewForm()
+
+    return render(request, "reviews/create_review.html", {"form": form})
