@@ -11,7 +11,14 @@ def StaffBookingList(request):
 
 
 def ApproveBooking(request, booking_id):
-    booking = get_object_or_404(Booking, id=booking_id, approved='pending')
+    booking = get_object_or_404(Booking, booking_id=booking_id, approved='pending')
     booking.approved = 'approved'
     booking.save()
-    return redirect('approve_booking')
+    return redirect('staff_booking_list')
+
+
+def DenyBooking(request, booking_id):
+    booking = get_object_or_404(Booking, booking_id=booking_id, approved='pending')
+    booking.approved = 'denied'
+    booking.save()
+    return redirect('staff_booking_list')
