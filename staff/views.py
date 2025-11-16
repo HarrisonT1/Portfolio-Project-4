@@ -2,9 +2,13 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib import messages
 from booking.models import Booking
+from reviews.models import Review
+
 
 # Create your views here.
 
+
+# BOOKING
 
 def StaffBookingList(request):
     bookings = Booking.objects.all()
@@ -34,3 +38,13 @@ def DenyBooking(request, booking_id):
 def ViewBooking(request, booking_id):
     booking = get_object_or_404(Booking, booking_id=booking_id)
     return render(request, 'staff/staff_booking_view_booking.html', {'booking': booking})
+
+# REVIEWS
+
+def StaffReviewList(request)
+    reviews = Review.objects.all()
+    return render(request, 'staff/staff_review_list.html', {'reviews': reviews})
+
+# def ApproveReview
+# def DenyReview
+# def ViewReview
