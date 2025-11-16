@@ -1,3 +1,7 @@
 <div>
-    
+    {% for review in reviews %}
+        <p>{{ review.first_name }} {{ review.last_name}}</p>
+        <p>{{ review.star_rating }}</p>
+        <p>{{ review.comment }}</p>
+    {% endfor %}
 </div>

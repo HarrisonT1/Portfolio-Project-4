@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import ReviewForm
@@ -5,8 +6,15 @@ from .models import Review
 
 # Create your views here.
 
+
 @login_required
 def CreateReview(request):
+    user = request.user
+    # Need to add profile editability **************
+    if not user.first_name and not user.last_name:
+        messages.error(request, "Please add a first and last name to your profile before continuing")
+        return redirect('edit_profile')
+
     if request.method == "POST":
         form = ReviewForm(request.POST)
         if form.is_valid():

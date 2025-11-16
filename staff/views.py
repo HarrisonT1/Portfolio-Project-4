@@ -41,7 +41,8 @@ def ViewBooking(request, booking_id):
 
 # REVIEWS
 
-def StaffReviewList(request)
+
+def StaffReviewList(request):
     reviews = Review.objects.all()
     return render(request, 'staff/staff_review_list.html', {'reviews': reviews})
 
