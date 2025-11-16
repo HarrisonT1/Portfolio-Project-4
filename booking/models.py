@@ -7,6 +7,12 @@ from .utils import create_id
 
 
 class Booking(models.Model):
+    APPROVED_CHOICES = [
+        ('pending', 'pending'),
+        ('approved', 'approved'),
+        ('denied', 'denied'),
+    ]
+
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="bookings")
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
@@ -23,7 +29,11 @@ class Booking(models.Model):
         default=create_id,
         null=False,
         )
-    aprroved = models.BooleanField(default=False)
+    approved = models.CharField(
+        max_length=10,
+        choices=APPROVED_CHOICES,
+        default='pending'
+    )
 
     def CalcTime(self, *args, **kwargs):
         if self.duration:
