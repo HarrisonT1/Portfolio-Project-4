@@ -5,8 +5,9 @@ from booking.models import Booking
 # Create your views here.
 
 
-def StaffDashboard(request):
-    return HttpResponse("Hello, World!")
+def StaffBookingList(request):
+    bookings = Booking.objects.all()
+    return render(request, 'staff/staff_booking_list.html', {'bookings': bookings})
 
 
 def ApproveBooking(request, booking_id):

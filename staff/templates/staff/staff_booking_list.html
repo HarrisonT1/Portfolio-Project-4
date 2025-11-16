@@ -22,21 +22,7 @@
                     <td>{{ booking.number_of_people }}</td>
                     <td>{{ booking.comments }}</td>
                     <td>{{ booking.booking_id }}</td>
-                    <td>
-                        <a href="{% url %}">
-                            <button type="button">Approve</button>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="{% url %}">
-                            <button type="button">Deny</button>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="{% url %}">
-                            <button type="button">View</button>
-                        </a>
-                    </td>
+
                 </tr>
             {% endfor %}
         </tbody>
