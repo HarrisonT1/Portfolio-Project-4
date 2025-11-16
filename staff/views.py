@@ -10,7 +10,7 @@ def StaffDashboard(request):
 
 
 def ApproveBooking(request, booking_id):
-    booking = get_object_or_404(Booking, id=booking_id, status='pending')
-    booking.approved = True
+    booking = get_object_or_404(Booking, id=booking_id, approved='pending')
+    booking.approved = 'approved'
     booking.save()
     return redirect('staff_booking_list')
