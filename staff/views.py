@@ -14,4 +14,4 @@ def ApproveBooking(request, booking_id):
     booking = get_object_or_404(Booking, id=booking_id, approved='pending')
     booking.approved = 'approved'
     booking.save()
-    return redirect('staff_booking_list')
+    return redirect('approve_booking')
