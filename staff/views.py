@@ -4,5 +4,3 @@ from django.http import HttpResponse
 # Create your views here.
 
 
-def staff_dashboard(request):
-    return HttpResponse("Hello, World!")
