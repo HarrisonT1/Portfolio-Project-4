@@ -6,14 +6,14 @@ class BookingForm(forms.ModelForm):
     class Meta:
         model = Booking
         fields = [
-            'first_name'
-            'last_name'
-            'email'
-            'booking_date'
-            'booking_time'
-            'duration'
-            'comments'
-            'number_of_people'
+            'first_name',
+            'last_name',
+            'email',
+            'booking_date',
+            'booking_time',
+            'duration',
+            'comments',
+            'number_of_people',
         ]
 
         widgets = {
