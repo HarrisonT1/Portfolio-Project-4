@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
+from django.contrib import messages
 from booking.models import Booking
 
 # Create your views here.
@@ -11,14 +12,20 @@ def StaffBookingList(request):
 
 
 def ApproveBooking(request, booking_id):
-    booking = get_object_or_404(Booking, booking_id=booking_id, approved='pending')
+    booking = Booking.objects.filter(booking_id=booking_id, approved='pending').first()
+    if not booking:
+        messages.error(request, "Booking not found")
+        return redirect('staff_booking_list')
     booking.approved = 'approved'
     booking.save()
     return redirect('staff_booking_list')
 
 
 def DenyBooking(request, booking_id):
-    booking = get_object_or_404(Booking, booking_id=booking_id, approved='pending')
+    booking = Booking.objects.filter(booking_id=booking_id, approved='pending').first()
+    if not booking:
+        messages.error(request, "Booking not found")
+        return redirect('staff_booking_list')
     booking.approved = 'denied'
     booking.save()
     return redirect('staff_booking_list')
