@@ -5,8 +5,12 @@ from booking.models import Booking
 # Create your views here.
 
 
+def StaffDashboard(request):
+    return HttpResponse("Hello, World!")
+
+
 def ApproveBooking(request, booking_id):
-    booking = get_object_or_404(Booking, id=booking_id)
-    booking.aprroved = 'approved'
+    booking = get_object_or_404(Booking, id=booking_id, status='pending')
+    booking.approved = True
     booking.save()
     return redirect('staff_booking_list')
