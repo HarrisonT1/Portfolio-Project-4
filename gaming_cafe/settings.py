@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'profile_app',
     'booking',
     'reviews',
+    'staff',
 ]
 
 SITE_ID = 1

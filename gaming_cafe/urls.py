@@ -24,4 +24,5 @@ urlpatterns = [
     path('', include("profile_app.urls")),
     path('', include("booking.urls")),
     path('', include("reviews.urls")),
+    path('', include("staff.urls")),
 ]
