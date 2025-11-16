@@ -12,3 +12,4 @@ class Review(models.Model):
     )
     comment = models.TextField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
+    aprroved = models.BooleanField(default=False)

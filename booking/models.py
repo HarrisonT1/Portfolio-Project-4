@@ -23,6 +23,7 @@ class Booking(models.Model):
         default=create_id,
         null=False,
         )
+    aprroved = models.BooleanField(default=False)
 
     def CalcTime(self, *args, **kwargs):
         if self.duration:
