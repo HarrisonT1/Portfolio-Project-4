@@ -1,11 +1,28 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib import messages
+from datetime import date
 from booking.models import Booking
 from reviews.models import Review
 
 
 # Create your views here.
+
+# STAFF DASHBOARD
+
+def BookingCount():
+    total_bookings = Booking.objects.count()
+    future_bookings = Booking.objects.filter(booking_date__gte=date.today()).count()
+    pending_bookings = Booking.objects.filter(approved='pending').count()
+    past_bookings = Booking.objects.filter(booking_date__lt=date.today()).count()
+
+
+
+
+
+# def RevieCount():
+# def UserCount():
+
 
 
 # BOOKING
