@@ -1,0 +1,29 @@
+<div>
+    {% if approved_reviews %}
+        <ul>
+            {% for review in approved_reviews %}
+                <h2>Review by {{ review.user.username }}</h2>
+                <li>Rating: {{ review.star_Rating }}</li>
+                <li>Comment: {{ review.comment }}</li>
+                <li>Created on: {{ review.created_at }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>You currently have no approved reviews</p>
+    {% endif %}
+</div>
+
+<div>
+    {% if awaiting_approval_reviews %}
+        <ul>
+            {% for review in awaiting_approval_reviews %}
+                <h2>Review by {{ review.user.username }}</h2>
+                <li>Rating: {{ review.star_Rating }}</li>
+                <li>Comment: {{ review.comment }}</li>
+                <li>Created on: {{ review.created_at }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>You currently have no reviews awaiting approval</p>
+    {% endif %}
+</div>
