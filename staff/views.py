@@ -67,4 +67,9 @@ def DenyReview(request, review_id):
     return redirect('staff_review_list')
 
 
-# def ViewReview
+def ViewReview(request, review_id):
+    review = Review.objects.filter(id=review_id).first()
+    if not review:
+        messages.error(request, "Review not found")
+        return redirect('staff_review_list')
+    return render(request, 'reviews/staff_review_view.html', {'review': review})
