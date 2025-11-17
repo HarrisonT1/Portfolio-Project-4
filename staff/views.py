@@ -16,6 +16,13 @@ def BookingCount():
     pending_bookings = Booking.objects.filter(approved='pending').count()
     past_bookings = Booking.objects.filter(booking_date__lt=date.today()).count()
 
+    context = {
+        'total_bookings': total_bookings,
+        'future_bookings': future_bookings,
+        'pending_bookings': pending_bookings,
+        'past_bookings': past_bookings,
+    }
+
 
 
 
