@@ -46,6 +46,17 @@ def StaffReviewList(request):
     reviews = Review.objects.all()
     return render(request, 'staff/staff_review_list.html', {'reviews': reviews})
 
-# def ApproveReview
+
+def ApproveReview(request, Review_id):
+    review = Review.objects.filter(Review_id=Review_id, approved='pending').first()
+    if not review:
+        messages.error(request, "Review not found")
+        return redirect('staff_review_list')
+    review.approved = 'approved'
+    review.save()
+    return redirect('staff_review_list')
+
+
+
 # def DenyReview
 # def ViewReview
