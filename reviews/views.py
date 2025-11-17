@@ -51,7 +51,7 @@ def review_view(request, review_id):
         'comments': comments
     }
 
-    return render(request, 'review/review_view.html', context)
+    return render(request, 'reviews/review_view.html', context)
 
 
 def create_comment(request, review_id):
@@ -73,4 +73,4 @@ def create_comment(request, review_id):
         'form': form,
     }
 
-    return render(request, 'review/create_comment.html', context)
+    return render(request, 'reviews/create_comment.html', context)
