@@ -1,0 +1,15 @@
+<h2>Gaming Cafe Reviews</h2>
+
+{% if reviews%}
+    <div>
+        {% for review in reviews %}
+            <div> 
+                <span>{{ review.user.first_name }} {{ review.user.last_name }}</span>
+                <span>{{ review.star_rating }}</span>
+                <span>{{ review.comment }}</span>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>No reviews currently</p>
+{% endif %}
