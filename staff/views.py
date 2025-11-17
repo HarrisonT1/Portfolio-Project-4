@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib import messages
@@ -42,13 +43,13 @@ def ReviewCount(request):
     return render(request, 'staff/staff_dashboard', context)
 
 
-
-
-# def UserCount():
-
+def UserCount(request):
+    total_users = User.objects.count()
+    return render(request, 'staff/staff_dashboard', {'total_users', total_users})
 
 
 # BOOKING
+
 
 def StaffBookingList(request):
     bookings = Booking.objects.all()
