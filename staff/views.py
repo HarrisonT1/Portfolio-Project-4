@@ -72,4 +72,4 @@ def ViewReview(request, review_id):
     if not review:
         messages.error(request, "Review not found")
         return redirect('staff_review_list')
-    return render(request, 'reviews/staff_review_view.html', {'review': review})
+    return render(request, 'staff/staff_review_view.html', {'review': review})
