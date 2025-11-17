@@ -53,7 +53,7 @@ def BookingEdit(request, booking_id):
     return render(request, 'profile_app/booking_edit.html', context)
 
 
-def test(request):
+def Profile(request):
     return HttpResponse("Hello, World")
 
 
@@ -63,7 +63,7 @@ def EditProfile(request):
         form = EditProfileForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            return redirect('profile')
+            return redirect('show_profile')
     else:
         form = EditProfileForm(instance=request.user)
 
