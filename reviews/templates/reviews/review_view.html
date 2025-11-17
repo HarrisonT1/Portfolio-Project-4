@@ -1,0 +1,11 @@
+<div> 
+    <span>{{ review.user.first_name }} {{ review.user.last_name }}</span>
+    <span>{{ review.star_rating }}</span>
+    <span>{{ review.comment }}</span>
+</div>
+
+<h2>Comments:</h2>
+{% for comment in comments %}
+    <p>comment by: {{ comment.user.first_name }} {{ comment.user.last_name }}</p>
+    <p>{{ comment.comment }}</p>
+{% endfor %}
