@@ -82,3 +82,18 @@ def EditProfile(request):
         form = EditProfileForm(instance=request.user)
 
     return render(request, 'profile_app/edit_profile.html', {'form': form})
+
+
+@login_required
+def review_list(request):
+    user = request.user
+
+    approved_reviews = Review.objects.filter(user=user, approved='approved').order_by('-created_at')
+    awaiting_approval_reviews = Review.objects.filter(user=user, approved='pending').order_by('-created_at')
+
+    context = {
+        'approved_reviews': approved_reviews,
+        'awaiting_approval_reviews': awaiting_approval_reviews,
+    }
+
+    return render(request, 'profile_app/my_review_list.html', context)
