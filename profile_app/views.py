@@ -64,4 +64,4 @@ def EditProfile(request):
     else:
         form = EditProfileForm(instance=request.user)
 
-    return redirect(request, 'edit_profile.html', {'form': form})
+    return render(request, 'profile_app/edit_profile.html', {'form': form})
