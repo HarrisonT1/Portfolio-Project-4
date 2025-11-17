@@ -37,7 +37,7 @@ def DenyBooking(request, booking_id):
 
 def ViewBooking(request, booking_id):
     booking = get_object_or_404(Booking, booking_id=booking_id)
-    return render(request, 'staff/staff_booking_view_booking.html', {'booking': booking})
+    return render(request, 'staff/staff_booking_view.html', {'booking': booking})
 
 # REVIEWS
 
