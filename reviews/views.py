@@ -64,3 +64,5 @@ def review_view(request, review_id):
     }
 
     return render(request, 'reviews/review_view.html', context)
+
+    # add verification into comments, to be approved by staff @@@@@@@@@@
