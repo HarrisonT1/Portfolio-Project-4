@@ -64,7 +64,7 @@ def create_comment(request, review_id):
             comment.user = request.user
             comment.review = review
             comment.save()
-            return redirect('create_comment', review_id=review.id)
+            return redirect('review_view', review_id=review.id)
     else:
         form = CommentForm()
 

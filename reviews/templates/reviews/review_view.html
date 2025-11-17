@@ -9,3 +9,14 @@
     <p>comment by: {{ comment.user.first_name }} {{ comment.user.last_name }}</p>
     <p>{{ comment.comment }}</p>
 {% endfor %}
+
+
+{% if user.is_authenticated %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button type="submit">Submit comment</button>
+    </form>
+{% else %}
+<p>Please login before commenting on a review</p>
+{% endif %}
