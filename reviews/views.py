@@ -35,3 +35,8 @@ def CreateReview(request):
 def ReviewSuccess(request, review_id):
     review = Review.objects.get(id=review_id)
     return render(request, 'reviews/review_success.html', {'review': review})
+
+
+def review_list(request):
+    reviews = Review.objects.filter(approved='approved').order_by('-star_rating')
+    return render(request, 'reviews/review_list.html', {'reviews': reviews})
