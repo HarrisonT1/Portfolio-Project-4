@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from booking.models import Booking
 from booking.forms import BookingForm
+from reviews.models import Review
 from .forms import EditProfileForm
 
 # Create your views here.
@@ -53,8 +54,18 @@ def BookingEdit(request, booking_id):
     return render(request, 'profile_app/booking_edit.html', context)
 
 
-def Profile(request):
-    return HttpResponse("Hello, World")
+@login_required
+def profile(request):
+    user = request.user
+    bookings = user.bookings.all()
+    reviews = user.reviews.all()
+
+    context = {
+        'bookings': bookings,
+        'reviews': reviews,
+    }
+
+    return render(request, 'profile_app/profile_details.html', context)
 
 
 @login_required
