@@ -24,7 +24,7 @@ def BookingCount(request):
         'past_bookings': past_bookings,
     }
 
-    return render(request, 'staff/staff_dashboard', context)
+    return render(request, 'staff/staff_dashboard.html', context)
 
 
 def ReviewCount(request):
@@ -40,12 +40,12 @@ def ReviewCount(request):
         'past_reviews': past_reviews,
     }
 
-    return render(request, 'staff/staff_dashboard', context)
+    return render(request, 'staff/staff_dashboard.html', context)
 
 
 def UserCount(request):
     total_users = User.objects.count()
-    return render(request, 'staff/staff_dashboard', {'total_users', total_users})
+    return render(request, 'staff/staff_dashboard.html', {'total_users', total_users})
 
 
 # BOOKING
