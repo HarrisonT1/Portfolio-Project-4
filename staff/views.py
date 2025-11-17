@@ -12,30 +12,25 @@ from reviews.models import Review
 # STAFF DASHBOARD
 
 def staff_dashboard(request):
+    total_bookings = Booking.objects.count()
+    future_bookings = Booking.objects.filter(booking_date__gte=date.today()).count()
+    pending_bookings = Booking.objects.filter(approved='pending').count()
+    past_bookings = Booking.objects.filter(booking_date__lt=date.today()).count()
+    total_reviews = Review.objects.count()
+    pending_reviews = Review.objects.filter(approved='pending').count()
+    total_users = User.objects.count()
 
-        total_bookings = Booking.objects.count()
-        future_bookings = Booking.objects.filter(booking_date__gte=date.today()).count()
-        pending_bookings = Booking.objects.filter(approved='pending').count()
-        past_bookings = Booking.objects.filter(booking_date__lt=date.today()).count()
-        total_reviews = Review.objects.count()
-        future_reviews = Review.objects.filter(booking_date__gte=date.today()).count()
-        pending_reviews = Review.objects.filter(approved='pending').count()
-        past_reviews = Review.objects.filter(booking_date__lt=date.today()).count()
-        total_users = User.objects.count()
+    context = {
+        'total_bookings': total_bookings,
+        'future_bookings': future_bookings,
+        'pending_bookings': pending_bookings,
+        'past_bookings': past_bookings,
+        'total_reviews': total_reviews,
+        'pending_reviews': pending_reviews,
+        'total_users': total_users,
+    }
 
-        context = {
-            'total_bookings': total_bookings,
-            'future_bookings': future_bookings,
-            'pending_bookings': pending_bookings,
-            'past_bookings': past_bookings,
-            'total_reviews': total_reviews,
-            'future_reviews': future_reviews,
-            'pending_reviews': pending_reviews,
-            'past_reviews': past_reviews,
-            'total_users': total_users,
-        }
-
-        return render(request, 'staff/staff_dashboard.html', context)
+    return render(request, 'staff/staff_dashboard.html', context)
 
 
 # BOOKING
