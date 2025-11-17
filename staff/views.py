@@ -57,6 +57,14 @@ def ApproveReview(request, review_id):
     return redirect('staff_review_list')
 
 
+def DenyReview(request, review_id):
+    review = Review.objects.filter(id=review_id, approved='pending').first()
+    if not review:
+        messages.error(request, "Review not found")
+        return redirect('staff_review_list')
+    review.approved = 'denied'
+    review.save()
+    return redirect('staff_review_list')
 
-# def DenyReview
+
 # def ViewReview
