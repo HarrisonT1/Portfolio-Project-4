@@ -10,7 +10,7 @@ from reviews.models import Review
 
 # STAFF DASHBOARD
 
-def BookingCount():
+def BookingCount(request):
     total_bookings = Booking.objects.count()
     future_bookings = Booking.objects.filter(booking_date__gte=date.today()).count()
     pending_bookings = Booking.objects.filter(approved='pending').count()
@@ -23,11 +23,27 @@ def BookingCount():
         'past_bookings': past_bookings,
     }
 
+    return render(request, 'staff/staff_dashboard', context)
+
+
+def ReviewCount(request):
+    total_reviews = Review.objects.count()
+    future_reviews = Review.objects.filter(booking_date__gte=date.today()).count()
+    pending_reviews = Review.objects.filter(approved='pending').count()
+    past_reviews = Review.objects.filter(booking_date__lt=date.today()).count()
+
+    context = { 
+        'total_reviews': total_reviews,
+        'future_reviews': future_reviews,
+        'pending_reviews': pending_reviews,
+        'past_reviews': past_reviews,
+    }
+
+    return render(request, 'staff/staff_dashboard', context)
 
 
 
 
-# def RevieCount():
 # def UserCount():
 
 
