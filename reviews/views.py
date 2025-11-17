@@ -46,17 +46,6 @@ def review_view(request, review_id):
     review = get_object_or_404(Review, id=review_id, approved='approved')
     comments = review.comments.all().order_by('-created_at')
 
-    context = {
-        'review': review,
-        'comments': comments
-    }
-
-    return render(request, 'reviews/review_view.html', context)
-
-
-def create_comment(request, review_id):
-    review = get_object_or_404(Review, id=review_id, approved='approved')
-
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
@@ -70,7 +59,8 @@ def create_comment(request, review_id):
 
     context = {
         'review': review,
+        'comments': comments,
         'form': form,
     }
 
-    return render(request, 'reviews/create_comment.html', context)
+    return render(request, 'reviews/review_view.html', context)
