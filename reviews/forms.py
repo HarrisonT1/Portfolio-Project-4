@@ -1,5 +1,5 @@
 from django import forms
-from .models import Review
+from .models import Review, Comment
 
 
 class ReviewForm(forms.ModelForm):
@@ -10,3 +10,9 @@ class ReviewForm(forms.ModelForm):
             'star_rating': forms.Select(),
             'comment': forms.Textarea()
         }
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['comment']
