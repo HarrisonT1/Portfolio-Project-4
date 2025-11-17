@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from booking.models import Booking
 from booking.forms import BookingForm
+from .forms import EditProfileForm
 
 # Create your views here.
 
@@ -50,3 +51,17 @@ def BookingEdit(request, booking_id):
         'booking': booking
     }
     return render(request, 'profile_app/booking_edit.html', context)
+
+
+def test(request):
+    return HttpResponse("Hello, World")
+
+
+@login_required
+def EditProfile(request):
+    if request.method == 'POST':
+        form = EditProfileForm(request.POST, instance=request.user)
+    else:
+        form = EditProfileForm(instance=request.user)
+
+    return redirect(request, 'edit_profile.html', {'form': form})
