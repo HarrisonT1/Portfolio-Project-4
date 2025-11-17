@@ -1,3 +1,5 @@
+
+from django.urls import reverse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -74,7 +76,8 @@ def EditProfile(request):
         form = EditProfileForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            return redirect('show_profile')
+            next_url = request.GET.get('next') or reverse('show_profile')
+            return redirect(next_url)
     else:
         form = EditProfileForm(instance=request.user)
 

@@ -1,3 +1,4 @@
+from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
@@ -13,7 +14,9 @@ def CreateReview(request):
     # Need to add profile editability **************
     if not user.first_name and not user.last_name:
         messages.error(request, "Please add a first and last name to your profile before continuing")
-        return redirect('edit_profile')
+        next_url = reverse('create_review')
+        edit_profile_url = f"{reverse('edit_profile')}?next={next_url}"
+        return redirect(edit_profile_url)
 
     if request.method == "POST":
         form = ReviewForm(request.POST)
