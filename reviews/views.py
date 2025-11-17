@@ -2,7 +2,7 @@ from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import ReviewForm
+from .forms import ReviewForm, CommentForm
 from .models import Review
 
 # Create your views here.
@@ -40,3 +40,25 @@ def ReviewSuccess(request, review_id):
 def review_list(request):
     reviews = Review.objects.filter(approved='approved').order_by('-star_rating')
     return render(request, 'reviews/review_list.html', {'reviews': reviews})
+
+
+def create_comment(request, review_id):
+    review = get_object_or_404(Review, id=review_id, approved='approved')
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.user = request.user
+            comment.review = review
+            comment.save()
+            return redirect('/')
+    else:
+        form = CommentForm()
+
+    context = {
+        'review': review,
+        'form': form,
+    }
+
+    return render(request, 'review/create_comment.html', context)
