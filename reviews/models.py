@@ -24,6 +24,9 @@ class Review(models.Model):
         default='pending'
     )
 
+    def __str__(self):
+        return f"{self.user.first_name} {self.user.last_name} {self.star_rating}"
+
 
 class Comment(models.Model):
     review = models.ForeignKey('review', on_delete=models.CASCADE, related_name='comments')
