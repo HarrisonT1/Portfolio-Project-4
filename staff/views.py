@@ -70,7 +70,18 @@ def ViewBooking(request, booking_id):
 
 def StaffReviewList(request):
     reviews = Review.objects.all()
-    return render(request, 'staff/staff_review_list.html', {'reviews': reviews})
+    approved_reviews = Review.objects.filter(approved='approved')
+    pending_reviews = Review.objects.filter(approved='pending')
+    denied_reviews = Review.objects.filter(approved='denied')
+
+    context = {
+        'reviews': reviews,
+        'approved_reviews': approved_reviews,
+        'pending_reviews': pending_reviews,
+        'denied_reviews': denied_reviews,
+    }
+
+    return render(request, 'staff/staff_review_list.html', context)
 
 
 def ApproveReview(request, review_id):
