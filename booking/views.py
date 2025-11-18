@@ -29,7 +29,9 @@ def BookingSuccess(request, booking_id):
 
 @login_required
 def food_order(request, booking_id):
-    booking = get_object_or_404(Booking, id=booking_id)
+    booking = get_object_or_404(Booking, booking_id=booking_id)
+
+    menu_items = Menu.objects.all()
 
     if request.method == 'POST':
         form = OrderForm(request.POST)
@@ -45,6 +47,7 @@ def food_order(request, booking_id):
     context = {
         'booking': booking,
         'form': form,
+        'menu_items': menu_items,
     }
 
-    return render(request, 'booking/create_order', context)
+    return render(request, 'booking/create_order.html', context)
