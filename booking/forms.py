@@ -1,5 +1,5 @@
 from django import forms
-from .models import Booking
+from .models import Booking, Menu, Order
 
 
 class BookingForm(forms.ModelForm):
@@ -24,3 +24,15 @@ class BookingForm(forms.ModelForm):
                 'type': 'time'
             })
         }
+
+
+class OrderForm(forms.ModelForm):
+    items = forms.ModelMultipleChoiceField(
+        queryset=Menu.objects.none(),
+        widget=forms.CheckboxSelectMultiple,
+        required=True,
+    )
+
+    class Meta:
+        model = Order
+        fields = ['items']

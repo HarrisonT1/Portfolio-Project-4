@@ -35,12 +35,12 @@ class Booking(models.Model):
         default='pending'
     )
 
-    def CalcTime(self, *args, **kwargs):
-        if self.duration:
-            start_datetime = datetime.combine(self.booking_date, self.booking_time)
-            end_datetime = start_datetime + self.duration
-            self.end_time = end_datetime.time()
-        super().save(*args, **kwargs)
+    # def CalcTime(self, *args, **kwargs):
+    #     if self.duration:
+    #         start_datetime = datetime.combine(self.booking_date, self.booking_time)
+    #         end_datetime = start_datetime + self.duration
+    #         self.end_time = end_datetime.time()
+    #     super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} booked for {self.booking_time} on {self.booking_date}"
