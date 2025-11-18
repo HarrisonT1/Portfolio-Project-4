@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import BookingForm
-from .models import Booking
+from .forms import BookingForm, OrderForm
+from .models import Booking, Order, Menu
 
 # Create your views here.
 
@@ -25,3 +25,19 @@ def CreateBooking(request):
 def BookingSuccess(request, booking_id):
     booking = get_object_or_404(Booking, booking_id=booking_id, user=request.user)
     return render(request, 'booking/booking_success.html', {'booking': booking})
+
+
+@login_required
+def food_order(request, booking_id):
+    booking = get_object_or_404(Booking, id=booking_id)
+
+    if request.method == 'POST':
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            order = form.save(commit=False)
+            order.booking = booking
+            order.save()
+            form.save_m2m()
+            return redirect('booking_success')
+    else:
+        form = OrderForm()
