@@ -56,9 +56,16 @@ class Menu(models.Model):
 
 class Order(models.Model):
     booking = models.ForeignKey(Booking, on_delete=models.CASCADE, related_name='orders')
-    items = models.ManyToManyField(Menu)
-    quantity = models.PositiveIntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def total_price(self):
+        return sum(item.menu_item.price * item.quantity for item in self.order_items.all())
+
     def __str__(self):
-        return self.booking, self.items
+        return f"Booking - {self.booking}"
+
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='order_items')
+    menu_item = models.ForeignKey(Menu, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
