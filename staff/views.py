@@ -74,7 +74,7 @@ def StaffReviewList(request):
 
 
 def ApproveReview(request, review_id):
-    review = Review.objects.filter(id=review_id, approved='pending').first()
+    review = Review.objects.filter(id=review_id).first()
     if not review:
         messages.error(request, "Review not found")
         return redirect('staff_review_list')
@@ -84,7 +84,7 @@ def ApproveReview(request, review_id):
 
 
 def DenyReview(request, review_id):
-    review = Review.objects.filter(id=review_id, approved='pending').first()
+    review = Review.objects.filter(id=review_id).first()
     if not review:
         messages.error(request, "Review not found")
         return redirect('staff_review_list')
