@@ -1,7 +1,24 @@
-<div>
+<h2>All Reviews</h2>
+<table>
+    <tr>
+        <th>User</th>
+        <th>Review</th>
+        <th>Status</th>
+    </tr>
     {% for review in reviews %}
-        <p>{{ review.first_name }} {{ review.last_name}}</p>
-        <p>{{ review.star_rating }}</p>
-        <p>{{ review.comment }}</p>
+        <tr>
+            <td>{{ review.user }}</td>
+            <td>{{ review.comment|truncatechars:20 }}</td>
+            <td>{{ review.approved }}</td>
+            <td>
+                <a href="">View</a>
+            </td>
+            <td>
+                <a href="{% url 'approve_review' comment.id %}">Approve</a>
+            </td>
+            <td>
+                <a href="{% url 'deny_review' comment.id %}">Deny</a>
+            </td>
+        </tr>
     {% endfor %}
-</div>
+</table>
