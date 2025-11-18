@@ -11,6 +11,16 @@
                 <td>{{ comment.user }}</td>
                 <td>{{ comment.comment|truncatechars:20 }}</td>
                 <td>{{ comment.approved }}</td>
+                <td>
+                    <a href="">View</a>
+                </td>
+                <td>
+                    <a href="">Approve</a>
+                </td>
+                <td>
+                    <a href="">Deny</a>
+                </td>
+
             </tr>
         {% endfor %}
     </table>

@@ -12,4 +12,6 @@ urlpatterns = [
     path('staff/dashboard/review_list/view/<int:review_id>/', views.ViewReview, name='staff_review_view'),
     # COMMENTS
     path('staff/dashboard/comment_list/', views.comment_list, name='staff_comment_list'),
+    path('staff/dashboard/comment_list/<int:comment_id>/approve/', views.approve_comment, name='approve_comment'),
+    path('staff/dashboard/comment_list/<int:comment_id>/deny/', views.deny_comment, name='deny_comment'),
 ]
