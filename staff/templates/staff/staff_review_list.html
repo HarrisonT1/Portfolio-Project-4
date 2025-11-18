@@ -11,7 +11,7 @@
             <td>{{ review.comment|truncatechars:20 }}</td>
             <td>{{ review.approved }}</td>
             <td>
-                <a href="">View</a>
+                <a href="{% url 'staff_review_view' review.id %}">View</a>
             </td>
             <td>
                 <a href="{% url 'approve_review' review.id %}">Approve</a>
