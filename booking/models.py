@@ -44,3 +44,11 @@ class Booking(models.Model):
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} booked for {self.booking_time} on {self.booking_date}"
+
+
+class Menu(models.Model):
+    name = models.CharField(max_length=100)
+    price = models.DecimalField(max_digits=5, decimal_places=2)
+
+    def __str__(self):
+        return self.name
