@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.contrib import messages
 from datetime import date
 from booking.models import Booking
-from reviews.models import Review
+from reviews.models import Review, Comment
 
 
 # Create your views here.
@@ -99,3 +99,22 @@ def ViewReview(request, review_id):
         messages.error(request, "Review not found")
         return redirect('staff_review_list')
     return render(request, 'staff/staff_review_view.html', {'review': review})
+
+
+# COMMENTS
+
+
+def comment_list(request):
+    comments = Comment.objects.all()
+    approved_comments = Comment.objects.filter(approved='approved')
+    pending_comments = Comment.objects.filter(approved='pending')
+    denied_comments = Comment.objects.filter(approved='denied')
+
+    context = {
+        'comments': comments,
+        'approved_comments': approved_comments,
+        'pending_comments': pending_comments,
+        'denied_comments': denied_comments,
+    }
+
+    return render(request, 'staff/staff_comment_list.html', context)
