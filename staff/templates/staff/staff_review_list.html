@@ -1,24 +1,74 @@
-<h2>All Reviews</h2>
-<table>
-    <tr>
-        <th>User</th>
-        <th>Review</th>
-        <th>Status</th>
-    </tr>
-    {% for review in reviews %}
+<div>
+    <h2>All Reviews</h2>
+    <table>
         <tr>
-            <td>{{ review.user }}</td>
-            <td>{{ review.comment|truncatechars:20 }}</td>
-            <td>{{ review.approved }}</td>
-            <td>
-                <a href="{% url 'staff_review_view' review.id %}">View</a>
-            </td>
-            <td>
-                <a href="{% url 'approve_review' review.id %}">Approve</a>
-            </td>
-            <td>
-                <a href="{% url 'deny_review' review.id %}">Deny</a>
-            </td>
+            <th>User</th>
+            <th>Review</th>
+            <th>Status</th>
         </tr>
-    {% endfor %}
-</table>
+        {% for review in reviews %}
+            <tr>
+                <td>{{ review.user }}</td>
+                <td>{{ review.comment|truncatechars:20 }}</td>
+                <td>{{ review.approved }}</td>
+                <td>
+                    <a href="{% url 'staff_review_view' review.id %}">View</a>
+                </td>
+                <td>
+                    <a href="{% url 'approve_review' review.id %}">Approve</a>
+                </td>
+                <td>
+                    <a href="{% url 'deny_review' review.id %}">Deny</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<div>
+    <h2>All Approved Reviews</h2>
+    <table>
+        <tr>
+            <th>User</th>
+            <th>review</th>
+        </tr>
+        {% for review in approved_review %}
+            <tr>
+                <td>{{ review.user }}</td>
+                <td>{{ review.comment|truncatechars:20 }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<div>
+    <h2>All Pending Reviews</h2>
+    <table>
+        <tr>
+            <th>User</th>
+            <th>review</th>
+        </tr>
+        {% for review in pending_review %}
+            <tr>
+                <td>{{ review.user }}</td>
+                <td>{{ review.comment|truncatechars:20 }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<div>
+    <h2>All Denied Reviews</h2>
+    <table>
+        <tr>
+            <th>User</th>
+            <th>review</th>
+        </tr>
+        {% for review in denied_reviews %}
+            <tr>
+                <td>{{ review.user }}</td>
+                <td>{{ review.comment|truncatechars:20 }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
