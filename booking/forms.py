@@ -28,7 +28,7 @@ class BookingForm(forms.ModelForm):
 
 class OrderForm(forms.ModelForm):
     items = forms.ModelMultipleChoiceField(
-        queryset=Menu.objects.none(),
+        queryset=Menu.objects.all(),
         widget=forms.CheckboxSelectMultiple,
         required=True,
     )
