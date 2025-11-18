@@ -121,7 +121,7 @@ def comment_list(request):
 
 
 def approve_comment(request, comment_id):
-    comment = Comment.objects.filter(id=comment_id, approved='pending').first()
+    comment = Comment.objects.filter(id=comment_id).first()
     if not comment:
         messages.error(request, "Comment not found")
         return redirect('staff_comment_list')
@@ -131,7 +131,7 @@ def approve_comment(request, comment_id):
 
 
 def deny_comment(request, comment_id):
-    comment = Comment.objects.filter(id=comment_id, approved='pending').first()
+    comment = Comment.objects.filter(id=comment_id).first()
     if not comment:
         messages.error(request, "Comment not found")
         return redirect('staff_comment_list')

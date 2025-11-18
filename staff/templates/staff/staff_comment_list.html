@@ -15,10 +15,10 @@
                     <a href="">View</a>
                 </td>
                 <td>
-                    <a href="">Approve</a>
+                    <a href="{% url 'approve_comment' comment.id %}">Approve</a>
                 </td>
                 <td>
-                    <a href="">Deny</a>
+                    <a href="{% url 'deny_comment' comment.id %}">Deny</a>
                 </td>
 
             </tr>
