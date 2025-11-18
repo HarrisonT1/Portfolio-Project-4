@@ -1,0 +1,65 @@
+<div>
+    <h2>All Comments</h2>
+    <table>
+        <tr>
+            <th>User</th>
+            <th>Comment</th>
+            <th>Status</th>
+        </tr>
+        {% for comment in comments %}
+            <tr>
+                <td>{{ comment.user }}</td>
+                <td>{{ comment.comment }}</td>
+                <td>{{ comment.approved }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<div>
+    <h2>All Approved Comments</h2>
+    <table>
+        <tr>
+            <th>User</th>
+            <th>Comment</th>
+        </tr>
+        {% for comment in approved_comments %}
+            <tr>
+                <td>{{ comment.user }}</td>
+                <td>{{ comment.comment }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<div>
+    <h2>All Pending Comments</h2>
+    <table>
+        <tr>
+            <th>User</th>
+            <th>Comment</th>
+        </tr>
+        {% for comment in pending_comments %}
+            <tr>
+                <td>{{ comment.user }}</td>
+                <td>{{ comment.comment }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<div>
+    <h2>All Denied Comments</h2>
+    <table>
+        <tr>
+            <th>User</th>
+            <th>Comment</th>
+        </tr>
+        {% for comment in denied_comments %}
+            <tr>
+                <td>{{ comment.user }}</td>
+                <td>{{ comment.comment }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
