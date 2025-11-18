@@ -9,7 +9,7 @@
         {% for comment in comments %}
             <tr>
                 <td>{{ comment.user }}</td>
-                <td>{{ comment.comment }}</td>
+                <td>{{ comment.comment|truncatechars:20 }}</td>
                 <td>{{ comment.approved }}</td>
             </tr>
         {% endfor %}
@@ -26,7 +26,7 @@
         {% for comment in approved_comments %}
             <tr>
                 <td>{{ comment.user }}</td>
-                <td>{{ comment.comment }}</td>
+                <td>{{ comment.comment|truncatechars:20 }}</td>
             </tr>
         {% endfor %}
     </table>
@@ -42,7 +42,7 @@
         {% for comment in pending_comments %}
             <tr>
                 <td>{{ comment.user }}</td>
-                <td>{{ comment.comment }}</td>
+                <td>{{ comment.comment|truncatechars:20 }}</td>
             </tr>
         {% endfor %}
     </table>
@@ -58,7 +58,7 @@
         {% for comment in denied_comments %}
             <tr>
                 <td>{{ comment.user }}</td>
-                <td>{{ comment.comment }}</td>
+                <td>{{ comment.comment|truncatechars:20 }}</td>
             </tr>
         {% endfor %}
     </table>
