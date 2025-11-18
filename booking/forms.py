@@ -28,14 +28,8 @@ class BookingForm(forms.ModelForm):
 
 
 class OrderForm(forms.ModelForm):
-    items = forms.ModelMultipleChoiceField(
-        queryset=Menu.objects.all(),
-        widget=forms.CheckboxSelectMultiple,
-        required=True,
-    )
-
     class Meta:
-        model = Order
+        model = OrderItem
         fields = ['menu_item', 'quantity']
 
 
