@@ -128,3 +128,13 @@ def approve_comment(request, comment_id):
     comment.approved = 'approved'
     comment.save()
     return redirect('staff_comment_list')
+
+
+def deny_comment(request, comment_id):
+    comment = Comment.objects.filter(id=comment_id, approved='pending').first()
+    if not comment:
+        messages.error(request, "Comment not found")
+        return redirect('staff_comment_list')
+    comment.approved = 'denied'
+    comment.save()
+    return redirect('staff_comment_list')
