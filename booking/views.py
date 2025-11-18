@@ -41,3 +41,10 @@ def food_order(request, booking_id):
             return redirect('booking_success')
     else:
         form = OrderForm()
+
+    context = {
+        'booking': booking,
+        'form': form,
+    }
+
+    return render(request, 'booking/create_order', context)
