@@ -57,6 +57,7 @@ class Menu(models.Model):
 class Order(models.Model):
     booking = models.ForeignKey(Booking, on_delete=models.CASCADE, related_name='orders')
     items = models.ManyToManyField(Menu)
+    quantity = models.PositiveIntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
