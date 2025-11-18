@@ -29,10 +29,22 @@ class Review(models.Model):
 
 
 class Comment(models.Model):
+    APPROVED_CHOICES = [
+        ('pending', 'pending'),
+        ('approved', 'approved'),
+        ('denied', 'denied'),
+    ]
+
     review = models.ForeignKey(Review, on_delete=models.CASCADE, related_name='comments')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     comment = models.TextField(max_length=250)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    approved = models.CharField(
+        max_length=10,
+        choices=APPROVED_CHOICES,
+        default='pending'
+    )
 
     def __str__(self):
         return f"{self.user.first_name} {self.user.last_name} comment on {self.review.id}"
