@@ -118,3 +118,13 @@ def comment_list(request):
     }
 
     return render(request, 'staff/staff_comment_list.html', context)
+
+
+def approve_comment(request, comment_id):
+    comment = Comment.objects.filter(id=comment_id, approved='pending').first()
+    if not comment:
+        messages.error(request, "Comment not found")
+        return redirect('staff_comment_list')
+    comment.approved = 'approved'
+    comment.save()
+    return redirect('staff_comment_list')
