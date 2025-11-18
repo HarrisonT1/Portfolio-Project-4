@@ -10,6 +10,8 @@ urlpatterns = [
     # REVIEWS
     path('staff/dashboard/review_list/', views.StaffReviewList, name='staff_review_list'),
     path('staff/dashboard/review_list/view/<int:review_id>/', views.ViewReview, name='staff_review_view'),
+    path('staff/dashboard/review_list/approve/<int:review_id>/', views.ApproveReview, name='approve_review'),
+    path('staff/dashboard/review_list/deny/<int:review_id>/', views.DenyReview, name='deny_review'),
     # COMMENTS
     path('staff/dashboard/comment_list/', views.comment_list, name='staff_comment_list'),
     path('staff/dashboard/comment_list/<int:comment_id>/approve/', views.approve_comment, name='approve_comment'),
