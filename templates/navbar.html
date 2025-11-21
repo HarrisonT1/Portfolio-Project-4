@@ -8,14 +8,14 @@
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         {% if user.is_staff %}
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Staff Dashboard</a>
+                <a class="nav-link active" aria-current="page" href="{% url 'staff_dashboard' %}">Staff Dashboard</a>
             </li>
         {% endif %}
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Make a Booking</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'booking_create' %}">Make a Booking</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Create a review</a>
+          <a class="nav-link" href="{% url 'create_review' %}">Create a review</a>
         </li>
         <li class="nav-item dropdown">
             {% if user.is_authenticated %}
@@ -23,9 +23,9 @@
                     {{ user.first_name|capfirst }}
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                    <li><a class="dropdown-item" href="#">Bookings</a></li>
-                    <li><a class="dropdown-item" href="#">Reviews</a></li>
+                    <li><a class="dropdown-item" href="{% url 'show_profile' %}">Profile</a></li>
+                    <li><a class="dropdown-item" href="{% url 'booking_list' %}">Bookings</a></li>
+                    <li><a class="dropdown-item" href="{% url 'my_review_list' %}">Reviews</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="{% url 'account_logout' %}">Log Out</a></li>
                 </ul>
