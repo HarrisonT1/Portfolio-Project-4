@@ -1,8 +1,14 @@
-{% extends "base.html" %} {% load static %} {% block content %} {% include "navbar.html" %} 
-<!-- HERO IMAGE -->
-<div class="container-fluid p-0">
+{% extends "base.html" %} {% load static %} {% block content %} {% include "navbar.html" %}
+
+<div class="container-fluid p-0 position-relative">
+    <!-- HERO IMAGE -->
     <img src="{% static 'images/hero-image.png'%}"
     alt="An image of inside the gaming cafe showing a few PC setups"
     class="w-100 img-fluid" id="hero-image">
+    <!-- CTA -->
+    <form id="cta" class="position-absolute top-50 start-50 align-items-center translate-middle text-center" action="{% url 'booking_create' %}">
+        <h2>Create a booking with us!</h2>
+        <button class="">Book Here</button>
+    </form>
 </div>
 {% include "footer.html" %} {% endblock %}
