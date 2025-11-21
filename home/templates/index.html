@@ -1,7 +1,8 @@
-{% extends "base.html" %} {% load static %} {% block content %} {% include "navbar.html" %}
+{% extends "base.html" %} {% load static %} {% block content %} {% include "navbar.html" %} 
+<!-- HERO IMAGE -->
 <div class="container-fluid p-0">
     <img src="{% static 'images/hero-image.png'%}"
     alt="An image of inside the gaming cafe showing a few PC setups"
     class="w-100 img-fluid" id="hero-image">
 </div>
-{% endblock %}
+{% include "footer.html" %} {% endblock %}

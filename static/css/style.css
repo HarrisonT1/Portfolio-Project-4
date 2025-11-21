@@ -1,6 +1,12 @@
+footer {
+    bottom: 0;
+    position: fixed;
+    height: 10vw;
+}
+
 #hero-image {
     object-position: center center;
     object-fit: cover;
-    max-height: 50vh;
+    max-height: 80vh;
     overflow: hidden;
 }
