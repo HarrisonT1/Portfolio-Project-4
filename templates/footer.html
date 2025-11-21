@@ -1,48 +1,53 @@
-<footer class="container-fluid mt-auto py-3" style="background-color: red;">
-    <!-- NAVIGATION IN FOOTER -->
-    <div class="nav-footer">
-        {% if user.is_staff %}
+<footer class="container-fluid mt-auto py-5 text-center d-flex align-items-center justify-content-center">
+    <div class="row" id="footer-container">
+        <!-- NAVIGATION IN FOOTER -->
+        <div class="text-white col-lg-3 col-12">
+            <p>Pixel Lounge</p>
+        </div>
+        <div class="nav-footer col-lg-3 col-12 text-white">
+            {% if user.is_staff %}
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Staff Dashboard</a>
+                </li>
+            {% endif %}
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Staff Dashboard</a>
-            </li>
-        {% endif %}
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Make a Booking</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Create a review</a>
-        </li>
-        <br>
-        {% if user.is_authenticated %}
-            <li class="nav-item">
-            <a class="nav-link" href="#">Profile</a>
+            <a class="nav-link active" aria-current="page" href="#">Make a Booking</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="#">Bookings</a>
+            <a class="nav-link" href="#">Create a review</a>
             </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#">Reviews</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#">Log Out</a>
-            </li>
-        {% else %}
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'account_login' %}">Log In</a>
-            </li>
-        {% endif %}
-    </div>
-    <!-- social media links -->
-    <div class="socials">
-        <a href="https://www.facebook.com/" aria-label="Opens Facebook (in a new tab)" target="_blank" rel="noopener"><i class="fa-brands fa-facebook"></i> Facebook</a>
-        <a href="https://www.instagram.com/" aria-label="Opens Instagram (in a new tab)" target="_blank" rel="noopener"><i class="fa-brands fa-square-instagram"></i> Instagram</a>
-        <a href="https://www.youtube.com/" aria-label="Opens Youtube (in a new tab)" target="_blank" rel="noopener"><i class="fa-brands fa-youtube"></i> YouTube</a>
-        <a href="https://x.com/?lang=en" aria-label="Opens X (in a new tab)" target="_blank" rel="noopener"><i class="fa-brands fa-x-twitter"></i> X</a>
-    </div>
-    <!-- Contact links -->
-    <div class="details">
-        <p><a target="_blank" rel="noopener" href="https://www.google.com/maps/@53.6828948,-1.4991316,3a,75y,4.46h,76.53t/data=!3m7!1e1!3m5!1sdEojIfPeNMgmiYzYNQa8MQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D13.470381108436825%26panoid%3DdEojIfPeNMgmiYzYNQa8MQ%26yaw%3D4.45989669725261!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI1MTExNy4wIKXMDSoASAFQAw%3D%3D">1 Marygate, Wakefield, England</a></p>
-        <p><a href="tel:+441924524562">Phone us: 01924 524562</a></p>
-        <p><a href="mailto:pixellounge@gmail.com">Email us: pixellounge@gmail.com</a></p>
+            <br>
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                <a class="nav-link" href="#">Profile</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#">Bookings</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#">Reviews</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#">Log Out</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account_login' %}">Log In</a>
+                </li>
+            {% endif %}
+        </div>
+        <!-- social media links -->
+        <div class="socials col-lg-3 col-12 text-white">
+            <a href="https://www.facebook.com/" aria-label="Opens Facebook (in a new tab)" target="_blank" rel="noopener"><i class="fa-brands fa-facebook"></i> Facebook</a>
+            <a href="https://www.instagram.com/" aria-label="Opens Instagram (in a new tab)" target="_blank" rel="noopener"><i class="fa-brands fa-square-instagram"></i> Instagram</a>
+            <a href="https://www.youtube.com/" aria-label="Opens Youtube (in a new tab)" target="_blank" rel="noopener"><i class="fa-brands fa-youtube"></i> YouTube</a>
+            <a href="https://x.com/?lang=en" aria-label="Opens X (in a new tab)" target="_blank" rel="noopener"><i class="fa-brands fa-x-twitter"></i> X</a>
+        </div>
+        <!-- Contact links -->
+        <div class="details col-lg-3 col-12 text-white">
+            <p><a target="_blank" rel="noopener" href="https://www.google.com/maps/@53.6828948,-1.4991316,3a,75y,4.46h,76.53t/data=!3m7!1e1!3m5!1sdEojIfPeNMgmiYzYNQa8MQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D13.470381108436825%26panoid%3DdEojIfPeNMgmiYzYNQa8MQ%26yaw%3D4.45989669725261!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI1MTExNy4wIKXMDSoASAFQAw%3D%3D">1 Marygate, Wakefield, England</a></p>
+            <p><a href="tel:+441924524562">Phone us: 01924 524562</a></p>
+            <p><a href="mailto:pixellounge@gmail.com">Email us: pixellounge@gmail.com</a></p>
+        </div>
     </div>
 </footer>
