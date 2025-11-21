@@ -62,3 +62,10 @@ footer .nav-footer, footer ul {
     max-height: 80vh;
     overflow: hidden;
 }
+
+@media screen and (max-width: 991px) {
+    .hover-link {
+        padding-bottom: 15px;
+        border-bottom: 2px solid #00FFFF;
+    }
+}
