@@ -42,6 +42,9 @@ body {
 
 #review-showcase .card {
     width: 18rem;
+    height: 20rem;
+    border: #39FF14 solid 2px;
+    background-color: #37ff1465;
 }
 
 /* Footer */

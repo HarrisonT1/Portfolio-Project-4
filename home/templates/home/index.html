@@ -13,15 +13,21 @@
     </form>
 </div>
 <!-- Review showcase -->
+
 <div id="review-showcase" class="container">
     <div class="row gap-5 mt-5">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-        </div>
+        {% for review in reviews %}
+            {% if review.star_rating >= 4%}
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ user.first_name }} {{ user.last_name }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ review.star_rating }}</h6>
+                        <p class="card-text">{{ review.comment }}</p>
+                    </div>
+                </div>
+                {% endif %}
+        {% endfor %}
     </div>
 </div>
+
 {% include "footer.html" %} {% endblock %}
