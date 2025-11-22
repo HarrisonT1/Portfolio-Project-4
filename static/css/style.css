@@ -38,6 +38,12 @@ body {
     overflow: hidden;
 }
 
+/* Details section */
+
+#details-section i {
+    font-size: 4rem;
+}
+
 /* Review showcase */
 
 #review-showcase .card {
