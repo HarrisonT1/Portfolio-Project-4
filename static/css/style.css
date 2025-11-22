@@ -25,8 +25,16 @@ body {
     align-items: center;
 }
 
-#cta h2 {
-    color: #39FF14;
+.button-colour {
+    background-color: #39FF14 !important;
+    border: #37d81b 2px solid;
+    color: #000000;
+    border-radius: 10px;
+}
+
+.button-colour:hover {
+    border: #1395e0 2px solid;
+    color: blue;
 }
 
 /* Hero */
@@ -55,9 +63,8 @@ body {
 
 /* Booking form */
 
-#booking_form .form-control {
-    border: #39FF14 2px solid;
-    border-radius: 0.5rem;
+#booking_form input {
+    border-radius: 5px;
 }
 
 /* Footer */
