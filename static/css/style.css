@@ -51,7 +51,13 @@ body {
     height: 20rem;
     border: #39FF14 solid 2px;
     background-color: #37ff1465;
-    cols
+}
+
+/* Booking form */
+
+#booking_form .form-control {
+    border: #39FF14 2px solid;
+    border-radius: 0.5rem;
 }
 
 /* Footer */
