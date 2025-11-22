@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import ReviewForm, CommentForm
 from .models import Review
+from .utils import all_reviews
 
 # Create your views here.
 
@@ -37,9 +38,12 @@ def ReviewSuccess(request, review_id):
     return render(request, 'reviews/review_success.html', {'review': review})
 
 
+def review_list_index(request):
+    return render(request, 'index.html', {"reviews": all_reviews()})
+
+
 def review_list(request):
-    reviews = Review.objects.filter(approved='approved').order_by('-star_rating')
-    return render(request, 'reviews/review_list.html', {'reviews': reviews})
+    return render(request, 'reviews/review_list.html', {"reviews": all_reviews()})
 
 
 def review_view(request, review_id):
