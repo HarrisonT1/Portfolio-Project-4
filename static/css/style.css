@@ -45,6 +45,7 @@ body {
     height: 20rem;
     border: #39FF14 solid 2px;
     background-color: #37ff1465;
+    cols
 }
 
 /* Footer */
@@ -86,10 +87,4 @@ footer .nav-footer, footer ul {
 
 #footer-container div {
     margin-top: 30px;
-}
-
-
-
-@media screen and (max-width: 991px) {
-
 }
