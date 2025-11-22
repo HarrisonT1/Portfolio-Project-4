@@ -17,15 +17,13 @@
 <div id="review-showcase" class="container">
     <div class="row gap-5 mt-5">
         {% for review in reviews %}
-            {% if review.star_rating >= 4%}
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ user.first_name }} {{ user.last_name }}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">{{ review.star_rating }}</h6>
-                        <p class="card-text">{{ review.comment }}</p>
-                    </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ user.first_name }} {{ user.last_name }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ review.star_rating }}</h6>
+                    <p class="card-text">{{ review.comment }}</p>
                 </div>
-                {% endif %}
+            </div>
         {% endfor %}
     </div>
 </div>

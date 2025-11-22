@@ -6,6 +6,6 @@ from reviews.models import Review
 
 def index(request):
 
-    reviews = Review.objects.filter(approved='approved').order_by('-star_rating')
+    reviews = Review.objects.filter(approved='approved', star_rating__gte=4).order_by('?')[:4]
 
     return render(request, "home/index.html", {'reviews': reviews})
