@@ -29,6 +29,21 @@ body {
     color: #39FF14;
 }
 
+/* Hero */
+
+#hero-image {
+    object-position: center center;
+    object-fit: cover;
+    max-height: 80vh;
+    overflow: hidden;
+}
+
+/* Review showcase */
+
+#review-showcase .card {
+    width: 18rem;
+}
+
 /* Footer */
 
 footer {
@@ -70,18 +85,8 @@ footer .nav-footer, footer ul {
     margin-top: 30px;
 }
 
-/* Hero */
 
-#hero-image {
-    object-position: center center;
-    object-fit: cover;
-    max-height: 80vh;
-    overflow: hidden;
-}
 
 @media screen and (max-width: 991px) {
-    .hover-link {
-        padding-bottom: 15px;
-        border-bottom: 2px solid #00FFFF;
-    }
+
 }
