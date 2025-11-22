@@ -1,8 +1,15 @@
 {% extends "base.html" %} {% block content %} {% load static %} {% include "navbar_2.html" %}
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Submit Booking</button>
-</form>
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <div>
+                <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+            </div>
+
+        {% endfor %}
+        <button class="btn btn-primary" type="submit">Submit Booking</button>
+    </form>
+</div>
 {% endblock %}
