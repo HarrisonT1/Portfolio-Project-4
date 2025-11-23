@@ -33,6 +33,12 @@ h1,h2 {
     list-style-type: none;
 }
 
+.errorlist {
+    list-style: none;
+    color: red;
+    padding: 0;
+}
+
 /* Buttons */
 
 #cta button {
