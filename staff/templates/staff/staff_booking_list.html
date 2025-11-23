@@ -17,8 +17,6 @@
                         <th>Comments</th>
                         <th>Booking ID</th>
                         <th>View</th>
-                        <th>Cancel</th>
-                        <th>Edit</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,16 +34,6 @@
                             <td>
                                 <a href="{% url 'booking_details' booking.booking_id %}">
                                     <button class="button-colour" type="button">View</button>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="{% url 'booking_cancel' booking.booking_id %}">
-                                    <button class="button-colour" type="button">Cancel</button>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="{% url 'booking_edit' booking.booking_id %}">
-                                    <button class="button-colour" type="button">Edit</button>
                                 </a>
                             </td>
                         </tr>
@@ -92,8 +80,6 @@
                         <th>Comments</th>
                         <th>Booking ID</th>
                         <th>View</th>
-                        <th>Cancel</th>
-                        <th>Edit</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -113,14 +99,67 @@
                                     <button class="button-colour" type="button">View</button>
                                 </a>
                             </td>
+                        </tr>
+
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% for booking in approved_bookings %}
+            <div class="modal fade" id="commentModal-{{ booking.booking_id }}" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Booking Comments</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                         </div>
+                        <div class="modal-body">
+                            <p>{{ booking.comments }}</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <h2 class="text-center mt-5 mb-3">Pending Bookings</h2>
+        {% if pending_bookings %}
+        <div class="table-responsive mb-5 scroll-feature">
+            <table id="booking-list" class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Booking Date</th>
+                        <th>Booking Time</th>
+                        <th>guests</th>
+                        <th>Comments</th>
+                        <th>Booking ID</th>
+                        <th>View</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for booking in pending_bookings %}
+                        <tr>
+                            <td>{{ booking.first_name }} {{ booking.last_name }}</td>
+                            <td>{{ booking.email }}</td>
+                            <td>{{ booking.booking_date }}</td>
+                            <td>{{ booking.booking_time }}</td>
+                            <td>{{ booking.number_of_people }}</td>
                             <td>
-                                <a href="{% url 'booking_cancel' booking.booking_id %}">
-                                    <button class="button-colour" type="button">Cancel</button>
-                                </a>
+                                <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-{{ booking.booking_id }}">Read</button>
                             </td>
+                            <td>{{ booking.booking_id }}</td>
                             <td>
-                                <a href="{% url 'booking_edit' booking.booking_id %}">
-                                    <button class="button-colour" type="button">Edit</button>
+                                <a href="{% url 'booking_details' booking.booking_id %}">
+                                    <button class="button-colour" type="button">View</button>
                                 </a>
                             </td>
                         </tr>
@@ -128,7 +167,70 @@
                     {% endfor %}
                 </tbody>
             </table>
-            {% for booking in approved_bookings %}
+            {% for booking in pending_bookings %}
+            <div class="modal fade" id="commentModal-{{ booking.booking_id }}" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Booking Comments</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                         </div>
+                        <div class="modal-body">
+                            <p>{{ booking.comments }}</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <h2 class="text-center mt-5 mb-3">Denied Bookings</h2>
+        {% if denied_bookings %}
+        <div class="table-responsive mb-5 scroll-feature">
+            <table id="booking-list" class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Booking Date</th>
+                        <th>Booking Time</th>
+                        <th>guests</th>
+                        <th>Comments</th>
+                        <th>Booking ID</th>
+                        <th>View</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for booking in denied_bookings %}
+                        <tr>
+                            <td>{{ booking.first_name }} {{ booking.last_name }}</td>
+                            <td>{{ booking.email }}</td>
+                            <td>{{ booking.booking_date }}</td>
+                            <td>{{ booking.booking_time }}</td>
+                            <td>{{ booking.number_of_people }}</td>
+                            <td>
+                                <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-{{ booking.booking_id }}">Read</button>
+                            </td>
+                            <td>{{ booking.booking_id }}</td>
+                            <td>
+                                <a href="{% url 'booking_details' booking.booking_id %}">
+                                    <button class="button-colour" type="button">View</button>
+                                </a>
+                            </td>
+                        </tr>
+
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% for booking in denied_bookings %}
             <div class="modal fade" id="commentModal-{{ booking.booking_id }}" tabindex="-1">
                 <div class="modal-dialog">
                     <div class="modal-content">
