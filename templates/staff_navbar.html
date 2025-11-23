@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-lg navbar-light w-100" id="staff-navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Dashboard</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#staff-nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="staff-nav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'staff_booking_list' %}">Bookings</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="{% url 'staff_review_list' %}">Reviews</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'staff_comment_list' %}">Comments</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
