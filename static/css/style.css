@@ -13,6 +13,11 @@ body {
     color: #EAEAEA;
 }
 
+.remove-decoration {
+    text-decoration: none;
+    list-style-type: none;
+}
+
 /* Buttons */
 
 #cta button {
@@ -108,10 +113,7 @@ footer {
     background-color: #121212;
 }
 
-.remove-decoration {
-    text-decoration: none;
-    list-style-type: none;
-}
+
 
 footer .nav-footer, footer ul {
     list-style: none;

@@ -2,6 +2,7 @@ from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
+from django.core.paginator import Paginator
 from .forms import ReviewForm, CommentForm
 from .models import Review
 
@@ -39,7 +40,12 @@ def ReviewSuccess(request, review_id):
 
 def review_list(request):
     reviews = Review.objects.filter(approved='approved').order_by('-star_rating')
-    return render(request, 'reviews/review_list.html', {'reviews': reviews})
+
+    paginator = Paginator(reviews, 6)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'reviews/review_list.html', {'page_obj': page_obj})
 
 
 @login_required
