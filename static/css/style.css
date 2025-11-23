@@ -59,11 +59,19 @@ nav {
 }
 
 #navbar2 a, #navbar1 a {
-    color: white;
+    color: #37d81b;
 }
 
-.navbar .dropdown-menu {
-    background-color: #000000;
+.dropdown-menu .dropdown-item:hover,
+.nav-item a:hover {
+    background-color: transparent;
+    color: #1395e0 !important;
+
+}
+
+.dropdown-menu {
+    border: none;
+    box-shadow: none;
 }
 
 .navbar-brand {
