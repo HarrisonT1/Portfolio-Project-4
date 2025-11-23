@@ -39,10 +39,10 @@ def staff_dashboard(request):
 
 
 def StaffBookingList(request):
-    bookings = Booking.objects.all()
-    approved_bookings = Booking.objects.filter(approved='approved')
-    pending_bookings = Booking.objects.filter(approved='pending')
-    denied_bookings = Booking.objects.filter(approved='denied')
+    bookings = Booking.objects.all().order_by("-booking_date")
+    approved_bookings = Booking.objects.filter(approved='approved').order_by("-booking_date")
+    pending_bookings = Booking.objects.filter(approved='pending').order_by("-booking_date")
+    denied_bookings = Booking.objects.filter(approved='denied').order_by("-booking_date")
 
     context = {
         'bookings': bookings,
@@ -55,7 +55,7 @@ def StaffBookingList(request):
 
 
 def ApproveBooking(request, booking_id):
-    booking = Booking.objects.filter(booking_id=booking_id, approved='pending').first()
+    booking = Booking.objects.filter(booking_id=booking_id).first()
     if not booking:
         messages.error(request, "Booking not found")
         return redirect('staff_booking_list')
@@ -65,7 +65,7 @@ def ApproveBooking(request, booking_id):
 
 
 def DenyBooking(request, booking_id):
-    booking = Booking.objects.filter(booking_id=booking_id, approved='pending').first()
+    booking = Booking.objects.filter(booking_id=booking_id).first()
     if not booking:
         messages.error(request, "Booking not found")
         return redirect('staff_booking_list')

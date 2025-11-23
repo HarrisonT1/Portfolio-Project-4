@@ -17,6 +17,8 @@
                         <th>Comments</th>
                         <th>Booking ID</th>
                         <th>View</th>
+                        <th>Approve</th>
+                        <th>Deny</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,12 +34,21 @@
                             </td>
                             <td>{{ booking.booking_id }}</td>
                             <td>
-                                <a href="{% url 'booking_details' booking.booking_id %}">
+                                <a href="">
                                     <button class="button-colour" type="button">View</button>
                                 </a>
                             </td>
+                            <td>
+                                <a href="{% url 'approve_booking' booking.booking_id %}">
+                                    <button class="button-colour" type="button">Approve</button>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{% url 'deny_booking' booking.booking_id %}">
+                                    <button class="button-colour" type="button">Deny</button>
+                                </a>
+                            </td>
                         </tr>
-
                     {% endfor %}
                 </tbody>
             </table>
@@ -80,6 +91,8 @@
                         <th>Comments</th>
                         <th>Booking ID</th>
                         <th>View</th>
+                        <th>Approve</th>
+                        <th>Deny</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -95,12 +108,21 @@
                             </td>
                             <td>{{ booking.booking_id }}</td>
                             <td>
-                                <a href="{% url 'booking_details' booking.booking_id %}">
+                                <a href="">
                                     <button class="button-colour" type="button">View</button>
                                 </a>
                             </td>
+                            <td>
+                                <a href="{% url 'approve_booking' booking.booking_id %}">
+                                    <button class="button-colour" type="button">Approve</button>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{% url 'deny_booking' booking.booking_id %}">
+                                    <button class="button-colour" type="button">Deny</button>
+                                </a>
+                            </td>
                         </tr>
-
                     {% endfor %}
                 </tbody>
             </table>
@@ -143,6 +165,8 @@
                         <th>Comments</th>
                         <th>Booking ID</th>
                         <th>View</th>
+                        <th>Approve</th>
+                        <th>Deny</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -158,12 +182,21 @@
                             </td>
                             <td>{{ booking.booking_id }}</td>
                             <td>
-                                <a href="{% url 'booking_details' booking.booking_id %}">
+                                <a href="">
                                     <button class="button-colour" type="button">View</button>
                                 </a>
                             </td>
+                            <td>
+                                <a href="{% url 'approve_booking' booking.booking_id %}">
+                                    <button class="button-colour" type="button">Approve</button>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{% url 'deny_booking' booking.booking_id %}">
+                                    <button class="button-colour" type="button">Deny</button>
+                                </a>
+                            </td>
                         </tr>
-
                     {% endfor %}
                 </tbody>
             </table>
@@ -206,6 +239,8 @@
                         <th>Comments</th>
                         <th>Booking ID</th>
                         <th>View</th>
+                        <th>Approve</th>
+                        <th>Deny</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -221,12 +256,21 @@
                             </td>
                             <td>{{ booking.booking_id }}</td>
                             <td>
-                                <a href="{% url 'booking_details' booking.booking_id %}">
+                                <a href="">
                                     <button class="button-colour" type="button">View</button>
                                 </a>
                             </td>
+                            <td>
+                                <a href="{% url 'approve_booking' booking.booking_id %}">
+                                    <button class="button-colour" type="button">Approve</button>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{% url 'deny_booking' booking.booking_id %}">
+                                    <button class="button-colour" type="button">Deny</button>
+                                </a>
+                            </td>
                         </tr>
-
                     {% endfor %}
                 </tbody>
             </table>
