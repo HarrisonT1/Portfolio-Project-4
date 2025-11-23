@@ -9,21 +9,57 @@
     <div class="collapse navbar-collapse" id="staff-nav">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="">Bookings</a>
+            <a class="nav-link active" aria-current="page" href="{% url 'staff_booking_list' %}">Bookings</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="">Reviews</a>
+          <a class="nav-link" aria-current="page" href="{% url 'staff_review_list' %}">Reviews</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="">Comments</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="="></a>
+          <a class="nav-link" href="{% url 'staff_comment_list' %}">Comments</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
+
+<!-- Metrics -->
+
+<div id="metrics" class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-4 g-3">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text"></p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text"></p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text"></p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% include "footer.html" %}
 {% endblock content %}

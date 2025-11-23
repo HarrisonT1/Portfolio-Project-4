@@ -167,12 +167,11 @@ nav {
 
 /* staff dashboard */
 
-#side-navbar {
-
-}
-
-#side-navbar li {
-    
+#metrics .card {
+    width: 11rem;
+    height: 5rem;
+    border: #39FF14 solid 2px;
+    background-color: #37ff1465;
 }
 
 /* Footer */
