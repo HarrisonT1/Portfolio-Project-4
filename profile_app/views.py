@@ -8,6 +8,7 @@ from django.http import HttpResponse
 from django.utils import timezone
 from booking.models import Booking
 from booking.forms import BookingForm
+from reviews.forms import ReviewForm
 from reviews.models import Review
 from .forms import EditProfileForm
 
@@ -99,3 +100,28 @@ def review_list(request):
     }
 
     return render(request, 'profile_app/my_review_list.html', context)
+
+
+@login_required
+def review_cancel(request, review_id):
+    review = get_object_or_404(Review, id=review_id, user=request.user)
+    review.delete()
+    return redirect('my_review_list')
+
+
+@login_required
+def review_edit(request, review_id):
+    review = get_object_or_404(Review, id=review_id, user=request.user)
+    form = ReviewForm(request.POST or None, instance=review)
+
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            return redirect('my_review_list')
+
+    context = {
+        'form': form,
+        'review': review
+    }
+
+    return render(request, 'profile_app/review_edit.html', context)

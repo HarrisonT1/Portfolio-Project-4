@@ -12,4 +12,6 @@ urlpatterns = [
     path('profile/bookings/<str:booking_id>/edit/', views.BookingEdit, name='booking_edit'),
     # REVIEWS
     path('profile/my_review_list/', views.review_list, name='my_review_list'),
+    path('profile/my_review_list/<int:review_id>/cancel/', views.review_cancel, name='review_cancel'),
+    path('profile/my_review_list/<int:review_id>/edit/', views.review_edit, name='review_edit'),
 ]
