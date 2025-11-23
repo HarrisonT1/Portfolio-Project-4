@@ -1,10 +1,11 @@
-{% extends "account/base.html" %}
+{% extends "base.html" %} {% load static %}
 
 {% load i18n %}
 
 {% block head_title %}{% trans "Sign Out" %}{% endblock head_title %}
 
 {% block content %}
+{% include "navbar_2.html" %}
 <h1>{% trans "Sign Out" %}</h1>
 
 <p>{% trans 'Are you sure you want to sign out?' %}</p>
@@ -17,5 +18,5 @@
   <button type="submit">{% trans 'Sign Out' %}</button>
 </form>
 
-
+{% include "footer.html" %}
 {% endblock content %}

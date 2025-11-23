@@ -81,6 +81,10 @@ nav {
     color: #37d81b;
 }
 
+#navbar2 .dropdown-menu {
+    background-color: black;
+}
+
 .dropdown-menu .dropdown-item:hover,
 .nav-item a:hover {
     background-color: transparent;
