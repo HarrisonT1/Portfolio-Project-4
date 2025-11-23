@@ -19,6 +19,7 @@ def staff_dashboard(request):
     total_reviews = Review.objects.count()
     pending_reviews = Review.objects.filter(approved='pending').count()
     total_users = User.objects.count()
+    total_comments = Comment.objects.filter(approved='approved').count()
 
     context = {
         'total_bookings': total_bookings,
@@ -28,6 +29,7 @@ def staff_dashboard(request):
         'total_reviews': total_reviews,
         'pending_reviews': pending_reviews,
         'total_users': total_users,
+        'total_comments': total_comments,
     }
 
     return render(request, 'staff/staff_dashboard.html', context)
