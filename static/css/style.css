@@ -19,6 +19,9 @@ body {
     margin: auto;
 }
 
+.custom-font {
+    font-family: 'orbitron', sans-serif;
+}
 
 h1,h2 {
     font-family: 'orbitron', sans-serif;
