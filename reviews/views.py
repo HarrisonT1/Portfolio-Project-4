@@ -42,8 +42,9 @@ def review_list(request):
     return render(request, 'reviews/review_list.html', {'reviews': reviews})
 
 
+@login_required
 def review_view(request, review_id):
-    review = get_object_or_404(Review, id=review_id, approved='approved')
+    review = get_object_or_404(Review, id=review_id, user=request.user)
     comments = review.comments.all().order_by('-created_at')
 
     if request.method == 'POST':
