@@ -1,10 +1,19 @@
-<div>
-    <h2>Your Booking Was A Success!</h2>
-    <p>{{ booking.first_name }}</p>
-    <p>{{ booking.last_name }}</p>
-    <p>{{ booking.booking_id }}</p>
-    <p>{{ booking.booking_date }}</p>
-    <p>{{ booking.booking_time }}</p>
-    <p>{{ booking.number_of_people }}</p>
-    <p>{{ booking.comments }}</p>
+{% extends "base.html" %} {% block content %} {% load static %} {% include "navbar_2.html" %}
+
+<div class="container d-flex flex-column justify-content-center align-items-center text-center">
+    <div class="row col-12 col-md-7">
+        <h2 class="mt-5">Your Booking Was A Success!</h2>
+        <h2 class="mb-5">We are excited to see you!</h3>
+        <p>A member of staff will review your booking shortly</p>
+        <p class="mb-5">Here are your booking details, if any of these are incorrect you can edit it through <a href="{% url 'booking_list' %}">your bookings</a></p>
+        <p>First name - {{ booking.first_name }}</p>
+        <p>Last name - {{ booking.last_name }}</p>
+        <p>Booking ID - {{ booking.booking_id }}</p>
+        <p>Booking date - {{ booking.booking_date }}</p>
+        <p>Booking time - {{ booking.booking_time }}</p>
+        <p>Number of people - {{ booking.number_of_people }}</p>
+        <p>Comments - {{ booking.comments }}</p>
+    </div>
 </div>
+
+{% include "footer.html" %} {% endblock %}
