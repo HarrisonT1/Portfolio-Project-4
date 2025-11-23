@@ -4,7 +4,7 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
-    min-height: 150vh;
+    min-height: 120vh;
     display: flex;
     flex-direction: column;
 }
@@ -80,9 +80,9 @@ nav {
     font-size: 4rem;
 }
 
-/* Review showcase */
+/* Review card */
 
-#review-showcase .card {
+.review-card .card {
     width: 18rem;
     height: 20rem;
     border: #39FF14 solid 2px;

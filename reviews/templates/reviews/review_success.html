@@ -1,5 +1,23 @@
-<div>
-    <h2>Your Review Was A Success!</h2>
-    <p>{{ review.star_rating }}</p>
-    <p>{{ review.comment }}</p>
+{% extends "base.html" %} {% block content %} {% load static %} {% include "navbar_2.html" %}
+
+<div class="container d-flex flex-column justify-content-center align-items-center text-center">
+    <div class="row col-12 col-md-7">
+        <h2 class="mt-5">Your Review Was A Success!</h2>
+        <h2 class="mb-5">Thank you for the review</h3>
+        <p>A member of staff will check your review shortly</p>
+        <p class="mb-5">Here are your review details, if any of these are incorrect you can edit it through <a href="{% url 'review_list' %}">your reviews</a></p>
+        <div class="container align-items-center text-center review-card">
+            <div class="row gap-5 mt-5 mb-5 d-flex justify-content-center">
+                    <div class="card col-6">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ user.first_name }} {{ user.last_name }}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ review.star_rating }}</h6>
+                            <p class="card-text">{{ review.comment }}</p>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+{% include "footer.html" %} {% endblock %}
