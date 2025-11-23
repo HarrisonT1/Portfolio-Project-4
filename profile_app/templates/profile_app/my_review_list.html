@@ -1,29 +1,68 @@
-<div>
-    {% if approved_reviews %}
-        <ul>
+{% extends "base.html" %} {% block content %} {% load static %} {% include "navbar_2.html" %}
+
+<div class="container d-flex flex-column justify-content-center align-items-center text-center">
+    <div class="row">
+        <h2>Gaming Cafe Reviews</h2>
+        {% if approved_reviews %}
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Comment</th>
+                        <th>View</th>
+                        <th>Cancel</th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for review in approved_reviews %}
+                        <tr>
+                            <td>{{ review.user.first_name }} {{ review.user.last_name }}</td>
+                            <td>
+                                <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-{{ review.id }}">Read</button>
+                            </td>
+                            <td>
+                                <a href="{% url 'review_view' review.id %}">
+                                    <button class="button-colour" type="button">View</button>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{% url 'review_cancel' review.id %}">
+                                    <button class="button-colour" type="button">Cancel</button>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{% url 'review_edit' review.id %}">
+                                    <button class="button-colour" type="button">Edit</button>
+                                </a>
+                            </td>
+                        </tr>
+
+                    {% endfor %}
+                </tbody>
+            </table>
             {% for review in approved_reviews %}
-                <h2>Review by {{ review.user.username }}</h2>
-                <li>Rating: {{ review.star_Rating }}</li>
-                <li>Comment: {{ review.comment }}</li>
-                <li>Created on: {{ review.created_at }}</li>
+            <div class="modal fade" id="commentModal-{{ review.id }}" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Review Comments</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                         </div>
+                        <div class="modal-body">
+                            <p>{{ review.comment }}</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             {% endfor %}
-        </ul>
-    {% else %}
-        <p>You currently have no approved reviews</p>
-    {% endif %}
+        </div>
+        {% endif %}
+    </div>
 </div>
 
-<div>
-    {% if awaiting_approval_reviews %}
-        <ul>
-            {% for review in awaiting_approval_reviews %}
-                <h2>Review by {{ review.user.username }}</h2>
-                <li>Rating: {{ review.star_Rating }}</li>
-                <li>Comment: {{ review.comment }}</li>
-                <li>Created on: {{ review.created_at }}</li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>You currently have no reviews awaiting approval</p>
-    {% endif %}
-</div>
+{% include "footer.html" %} {% endblock %}
