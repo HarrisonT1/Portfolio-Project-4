@@ -188,6 +188,14 @@ nav {
     font-family: 'orbitron', sans-serif;
 }
 
+/* Staff booking list */
+
+
+.scroll-feature {
+    max-height: 100px;
+    overflow-y: auto;
+}
+
 /* Footer */
 
 footer {

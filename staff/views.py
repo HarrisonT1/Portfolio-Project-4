@@ -40,7 +40,18 @@ def staff_dashboard(request):
 
 def StaffBookingList(request):
     bookings = Booking.objects.all()
-    return render(request, 'staff/staff_booking_list.html', {'bookings': bookings})
+    approved_bookings = Booking.objects.filter(approved='approved')
+    pending_bookings = Booking.objects.filter(approved='pending')
+    denied_bookings = Booking.objects.filter(approved='denied')
+
+    context = {
+        'bookings': bookings,
+        'approved_bookings': approved_bookings,
+        'pending_bookings': pending_bookings,
+        'denied_bookings': denied_bookings,
+    }
+
+    return render(request, 'staff/staff_booking_list.html', context)
 
 
 def ApproveBooking(request, booking_id):
