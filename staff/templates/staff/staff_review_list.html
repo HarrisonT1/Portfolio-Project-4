@@ -1,50 +1,42 @@
 {% extends "base.html" %} {% block content %} {% load static %} {% include "navbar_2.html" %} {% include "staff_navbar.html"%}
 
-<!-- Current bookings -->
+<!-- Current reviews -->
 <div class="container">
     <div class="row">
-        <h2 class="text-center mt-5 mb-3">Bookings</h2>
-        {% if bookings %}
+        <h2 class="text-center mt-5 mb-3">Reviews</h2>
+        {% if reviews %}
         <div class="table-responsive mb-5 scroll-feature">
-            <table id="booking-list" class="table">
+            <table class="table">
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Email</th>
-                        <th>Booking Date</th>
-                        <th>Booking Time</th>
-                        <th>guests</th>
                         <th>Comments</th>
-                        <th>Booking ID</th>
+                        <th></th>
                         <th>View</th>
                         <th>Approve</th>
                         <th>Deny</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for booking in bookings %}
+                    {% for review in reviews %}
                         <tr>
-                            <td>{{ booking.first_name }} {{ booking.last_name }}</td>
-                            <td>{{ booking.email }}</td>
-                            <td>{{ booking.booking_date }}</td>
-                            <td>{{ booking.booking_time }}</td>
-                            <td>{{ booking.number_of_people }}</td>
+                            <td>{{ user.first_name }} {{ user.last_name }}</td>
+                            <td>{{ review.comment|truncatechars:20 }}</td>
                             <td>
-                                <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-{{ booking.booking_id }}">Read</button>
+                                <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-{{ review.review_id }}">Read</button>
                             </td>
-                            <td>{{ booking.booking_id }}</td>
                             <td>
                                 <a href="">
                                     <button class="button-colour" type="button">View</button>
                                 </a>
                             </td>
                             <td>
-                                <a href="{% url 'approve_booking' booking.booking_id %}">
+                                <a href="{% url 'approve_review' review.id %}">
                                     <button class="button-colour" type="button">Approve</button>
                                 </a>
                             </td>
                             <td>
-                                <a href="{% url 'deny_booking' booking.booking_id %}">
+                                <a href="{% url 'deny_review' review.id %}">
                                     <button class="button-colour" type="button">Deny</button>
                                 </a>
                             </td>
@@ -52,16 +44,16 @@
                     {% endfor %}
                 </tbody>
             </table>
-            {% for booking in bookings %}
-            <div class="modal fade" id="commentModal-{{ booking.booking_id }}" tabindex="-1">
+            {% for review in reviews %}
+            <div class="modal fade" id="commentModal-{{ review.review_id }}" tabindex="-1">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Booking Comments</h5>
+                            <h5 class="modal-title">Review Comments</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                          </div>
                         <div class="modal-body">
-                            <p>{{ booking.comments }}</p>
+                            <p>{{ review.comment }}</p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -75,225 +67,4 @@
     </div>
 </div>
 
-<div class="container">
-    <div class="row">
-        <h2 class="text-center mt-5 mb-3">Approved Bookings</h2>
-        {% if approved_bookings %}
-        <div class="table-responsive mb-5 scroll-feature">
-            <table id="booking-list" class="table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Booking Date</th>
-                        <th>Booking Time</th>
-                        <th>guests</th>
-                        <th>Comments</th>
-                        <th>Booking ID</th>
-                        <th>View</th>
-                        <th>Approve</th>
-                        <th>Deny</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for booking in approved_bookings %}
-                        <tr>
-                            <td>{{ booking.first_name }} {{ booking.last_name }}</td>
-                            <td>{{ booking.email }}</td>
-                            <td>{{ booking.booking_date }}</td>
-                            <td>{{ booking.booking_time }}</td>
-                            <td>{{ booking.number_of_people }}</td>
-                            <td>
-                                <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-{{ booking.booking_id }}">Read</button>
-                            </td>
-                            <td>{{ booking.booking_id }}</td>
-                            <td>
-                                <a href="">
-                                    <button class="button-colour" type="button">View</button>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="{% url 'approve_booking' booking.booking_id %}">
-                                    <button class="button-colour" type="button">Approve</button>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="{% url 'deny_booking' booking.booking_id %}">
-                                    <button class="button-colour" type="button">Deny</button>
-                                </a>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            {% for booking in approved_bookings %}
-            <div class="modal fade" id="commentModal-{{ booking.booking_id }}" tabindex="-1">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Booking Comments</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                         </div>
-                        <div class="modal-body">
-                            <p>{{ booking.comments }}</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-        {% endif %}
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <h2 class="text-center mt-5 mb-3">Pending Bookings</h2>
-        {% if pending_bookings %}
-        <div class="table-responsive mb-5 scroll-feature">
-            <table id="booking-list" class="table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Booking Date</th>
-                        <th>Booking Time</th>
-                        <th>guests</th>
-                        <th>Comments</th>
-                        <th>Booking ID</th>
-                        <th>View</th>
-                        <th>Approve</th>
-                        <th>Deny</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for booking in pending_bookings %}
-                        <tr>
-                            <td>{{ booking.first_name }} {{ booking.last_name }}</td>
-                            <td>{{ booking.email }}</td>
-                            <td>{{ booking.booking_date }}</td>
-                            <td>{{ booking.booking_time }}</td>
-                            <td>{{ booking.number_of_people }}</td>
-                            <td>
-                                <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-{{ booking.booking_id }}">Read</button>
-                            </td>
-                            <td>{{ booking.booking_id }}</td>
-                            <td>
-                                <a href="">
-                                    <button class="button-colour" type="button">View</button>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="{% url 'approve_booking' booking.booking_id %}">
-                                    <button class="button-colour" type="button">Approve</button>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="{% url 'deny_booking' booking.booking_id %}">
-                                    <button class="button-colour" type="button">Deny</button>
-                                </a>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            {% for booking in pending_bookings %}
-            <div class="modal fade" id="commentModal-{{ booking.booking_id }}" tabindex="-1">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Booking Comments</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                         </div>
-                        <div class="modal-body">
-                            <p>{{ booking.comments }}</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-        {% endif %}
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <h2 class="text-center mt-5 mb-3">Denied Bookings</h2>
-        {% if denied_bookings %}
-        <div class="table-responsive mb-5 scroll-feature">
-            <table id="booking-list" class="table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Booking Date</th>
-                        <th>Booking Time</th>
-                        <th>guests</th>
-                        <th>Comments</th>
-                        <th>Booking ID</th>
-                        <th>View</th>
-                        <th>Approve</th>
-                        <th>Deny</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for booking in denied_bookings %}
-                        <tr>
-                            <td>{{ booking.first_name }} {{ booking.last_name }}</td>
-                            <td>{{ booking.email }}</td>
-                            <td>{{ booking.booking_date }}</td>
-                            <td>{{ booking.booking_time }}</td>
-                            <td>{{ booking.number_of_people }}</td>
-                            <td>
-                                <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-{{ booking.booking_id }}">Read</button>
-                            </td>
-                            <td>{{ booking.booking_id }}</td>
-                            <td>
-                                <a href="">
-                                    <button class="button-colour" type="button">View</button>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="{% url 'approve_booking' booking.booking_id %}">
-                                    <button class="button-colour" type="button">Approve</button>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="{% url 'deny_booking' booking.booking_id %}">
-                                    <button class="button-colour" type="button">Deny</button>
-                                </a>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            {% for booking in denied_bookings %}
-            <div class="modal fade" id="commentModal-{{ booking.booking_id }}" tabindex="-1">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Booking Comments</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                         </div>
-                        <div class="modal-body">
-                            <p>{{ booking.comments }}</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-        {% endif %}
-    </div>
-</div>
 {% include "footer.html" %} {% endblock %}
