@@ -95,6 +95,12 @@ nav {
     border-radius: 5px;
 }
 
+/* Review form */
+
+#create_review textarea {
+    border: 2px green solid;
+}
+
 /* Footer */
 
 footer {
