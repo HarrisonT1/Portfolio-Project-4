@@ -50,6 +50,16 @@ h1,h2 {
 
 /* Navbar */
 
+#navbar1 {
+    position: absolute;
+    z-index: 1000;
+}
+
+.navbar-toggler {
+    background-color:#37d81b;
+}
+
+
 nav {
     font-size: 1.3rem;
 }
@@ -156,4 +166,20 @@ footer .nav-footer, footer ul {
 
 #footer-container div {
     margin-top: 30px;
+}
+
+
+@media (max-width: 450px) {
+    #navbar1 {
+        position: relative;
+        background-color: black !important;
+    }
+}
+@media (max-width: 991px) {
+    #navbar1 {
+        background: rgba(0, 0, 0, 0.65);
+        backdrop-filter: blur(6px);
+        z-index: 1000;
+
+    }
 }
