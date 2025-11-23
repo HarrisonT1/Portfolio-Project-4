@@ -39,16 +39,24 @@ body {
 
 /* Navbar */
 
+nav {
+    font-size: 1.3rem;
+}
+
 #navbar2 {
     background-color: #000000;
 }
 
-#navbar2 a {
+#navbar2 a, #navbar1 a {
     color: white;
 }
 
 .navbar .dropdown-menu {
     background-color: #000000;
+}
+
+.navbar-brand {
+    color: #37d81b !important;
 }
 
 /* Hero */
@@ -58,6 +66,12 @@ body {
     object-fit: cover;
     max-height: 80vh;
     overflow: hidden;
+}
+
+/* CTA */
+
+#cta h2 {
+    color: #37d81b;
 }
 
 /* Details section */
