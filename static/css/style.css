@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Orbitron:wght@400..900&display=swap');
+
 /* General styles */
 
 body {
@@ -7,6 +9,10 @@ body {
     min-height: 120vh;
     display: flex;
     flex-direction: column;
+}
+
+h1,h2 {
+    font-family: 'orbitron', sans-serif;
 }
 
 .text-white {
