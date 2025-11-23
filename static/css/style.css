@@ -174,11 +174,16 @@ nav {
     background-color: #37ff1465;
 }
 
-  #metrics .row .col {
+#metrics .row .col {
     flex: 0 0 auto;
     max-width: 250px;
     margin-left: 50px;
-  }
+}
+
+#metrics h5 {
+    font-size: 13px;
+    font-family: 'orbitron', sans-serif;
+}
 
 /* Footer */
 
