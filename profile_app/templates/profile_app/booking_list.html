@@ -1,6 +1,6 @@
 {% extends "base.html" %} {% block content %} {% load static %} {% include "navbar_2.html" %}
 
-
+<!-- Current bookings -->
 <div class="container">
     <div class="row">
         <h2 class="text-center mt-5 mb-3">Current Bookings</h2>
@@ -30,7 +30,7 @@
                             <td>{{ booking.booking_time }}</td>
                             <td>{{ booking.number_of_people }}</td>
                             <td>
-                                <button class="btn button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-{{ booking.booking_id }}">Read more</button>
+                                <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-{{ booking.booking_id }}">Read</button>
                             </td>
                             <td>{{ booking.booking_id }}</td>
                             <td>
@@ -75,4 +75,5 @@
         {% endif %}
     </div>
 </div>
+
 {% include "footer.html" %} {% endblock %}

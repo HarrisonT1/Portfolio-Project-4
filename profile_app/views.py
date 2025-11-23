@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.utils import timezone
 from booking.models import Booking
 from booking.forms import BookingForm
 from reviews.models import Review
@@ -15,7 +16,8 @@ from .forms import EditProfileForm
 
 @login_required
 def BookingList(request):
-    bookings = Booking.objects.all().filter(user=request.user)
+    now = timezone.now()
+    bookings = Booking.objects.all().filter(user=request.user, booking_date__gte=now.date())
     return render(request, 'profile_app/booking_list.html', {'bookings': bookings})
 
 
