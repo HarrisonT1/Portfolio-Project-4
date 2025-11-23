@@ -1,12 +1,12 @@
 {% extends "base.html" %} {% block content %} {% load static %} {% include "navbar_2.html" %}
 
 
-<div class="container d-flex flex-column justify-content-center align-items-center text-center">
-    <div class="row d-flex flex-column justify-content-center align-items-center text-center">
-        <h1>Current Bookings</h1>
+<div class="container">
+    <div class="row">
+        <h2 class="text-center mt-5 mb-3">Current Bookings</h2>
         {% if bookings %}
         <div class="table-responsive">
-            <table id="booking-list">
+            <table id="booking-list" class="table">
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -16,6 +16,9 @@
                         <th>guests</th>
                         <th>Comments</th>
                         <th>Booking ID</th>
+                        <th>View</th>
+                        <th>Cancel</th>
+                        <th>Edit</th>
                     </tr>
                 </thead>
                 <tbody>
