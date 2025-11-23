@@ -1,13 +1,26 @@
-<div>
-    <p>Total bookings: {{ total_bookings }}</p>
-    <p>Future_bookings: {{ future_bookings }}</p>
-    <p>Pending_bookings: {{ pending_bookings }}</p>
-    <p>Past_bookings: {{ past_bookings }}</p>
-</div>
-<div>
-    <p>Total reviews: {{ total_reviews }}</p>
-    <p>Pending reviews: {{ pending_reviews }}</p>
-</div>
-<div>
-    <p>Total users: {{ total_users }}</p>
-</div>
+{% extends "base.html" %} {% block content %} {% load static %} {% include "navbar_2.html" %}
+
+<nav class="navbar navbar-expand-lg navbar-light w-100" id="staff-navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Dashboard</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#staff-nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="staff-nav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href=""></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href=""></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'create_review' %}"></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+{% include "footer.html" %}
+{% endblock content %}

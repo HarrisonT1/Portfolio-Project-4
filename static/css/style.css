@@ -149,6 +149,32 @@ nav {
     border: 2px green solid;
 }
 
+/* Staff section */
+
+/* staff nav */
+
+#staff-navbar {
+    background-color: #000000;
+}
+
+#staff-navbar a, #navbar1 a {
+    color: #37d81b;
+}
+
+#staff-navbar .dropdown-menu {
+    background-color: black;
+}
+
+/* staff dashboard */
+
+#side-navbar {
+
+}
+
+#side-navbar li {
+    
+}
+
 /* Footer */
 
 footer {
