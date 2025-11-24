@@ -31,6 +31,10 @@ h1,h2 {
     color: #EAEAEA;
 }
 
+.text-black a {
+    color: black;
+}
+
 .remove-decoration {
     text-decoration: none;
     list-style-type: none;
@@ -44,6 +48,26 @@ h1,h2 {
 
 .yellow-star span {
     color: gold;
+}
+
+/* metric cards */
+
+.metrics .card {
+    width: 11rem;
+    height: 5rem;
+    border: #39FF14 solid 2px;
+    background-color: #37ff1465
+}
+
+.metrics .row .col {
+    flex: 0 0 auto;
+    max-width: 250px;
+    margin-left: 50px;
+}
+
+.metrics h5 {
+    font-size: 13px;
+    font-family: 'orbitron', sans-serif;
 }
 
 /* Buttons */
@@ -156,6 +180,12 @@ nav {
     border: 2px green solid;
 }
 
+/* Profle */
+
+/* #personal-metrics a:hover {
+    color: #1395e0;
+} */
+
 /* Staff section */
 
 /* staff nav */
@@ -174,23 +204,7 @@ nav {
 
 /* staff dashboard */
 
-#metrics .card {
-    width: 11rem;
-    height: 5rem;
-    border: #39FF14 solid 2px;
-    background-color: #37ff1465;
-}
 
-#metrics .row .col {
-    flex: 0 0 auto;
-    max-width: 250px;
-    margin-left: 50px;
-}
-
-#metrics h5 {
-    font-size: 13px;
-    font-family: 'orbitron', sans-serif;
-}
 
 /* Staff booking list */
 

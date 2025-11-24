@@ -1,13 +1,20 @@
 {% extends "base.html" %} {% block content %} {% load static %} {% include "navbar_2.html" %}
 
-<div id="metrics" class="container">
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-xl-4 g-3 justify-content-center">
-        <h2 class="col-12 text-center">Hello {{ user.first_name }}</h2>
-        <h3 class="col-12 text-center">Personal Metrics</h3>
+<div class="container metrics">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-xl-4 mb-5 g-3 justify-content-center">
+        <div class="col-12">
+            <h2 class="col-12 text-center mb-3">Hello {{ user.first_name }}</h2>
+        </div>
+        <div class="text-center col-12 mb-5">
+            <a href="{% url 'edit_profile' %}" class="remove-decoration button-colour p-2">Edit Your profile</a>
+        </div>
+        <div class="col-12">
+            <h3 class="col-12 text-center">Personal Metrics</h3>
+        </div>
         <div class="col mb-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Total bookings</h5>
+                    <h5 class="card-title text-black"><a href="{% url 'booking_list' %}" class="remove-decoration">Total bookings</a></h5>
                     <p class="card-text">{{ bookings }}</p>
                 </div>
             </div>
@@ -15,7 +22,7 @@
         <div class="col mb-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Total reviews</h5>
+                    <h5 class="card-title text-black"><a href="{% url 'my_review_list' %}" class="remove-decoration">Total reviews</a></h5>
                     <p class="card-text">{{ reviews }}</p>
                 </div> 
             </div>
