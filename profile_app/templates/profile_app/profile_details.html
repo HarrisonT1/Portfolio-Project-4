@@ -1,0 +1,34 @@
+{% extends "base.html" %} {% block content %} {% load static %} {% include "navbar_2.html" %}
+
+<div id="metrics" class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-xl-4 g-3 justify-content-center">
+        <h2 class="col-12 text-center">Hello {{ user.first_name }}</h2>
+        <h3 class="col-12 text-center">Personal Metrics</h3>
+        <div class="col mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Total bookings</h5>
+                    <p class="card-text">{{ bookings }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Total reviews</h5>
+                    <p class="card-text">{{ reviews }}</p>
+                </div> 
+            </div>
+        </div>
+        <div class="col mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Total comments</h5>
+                    <p class="card-text">{{ comments }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include "footer.html" %} {% endblock %}

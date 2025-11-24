@@ -9,7 +9,7 @@ from django.utils import timezone
 from booking.models import Booking
 from booking.forms import BookingForm
 from reviews.forms import ReviewForm
-from reviews.models import Review
+from reviews.models import Review, Comment
 from .forms import EditProfileForm
 
 # Create your views here.
@@ -62,12 +62,14 @@ def BookingEdit(request, booking_id):
 @login_required
 def profile(request):
     user = request.user
-    bookings = user.bookings.all()
-    reviews = user.reviews.all()
+    bookings = user.bookings.all().count()
+    reviews = user.reviews.all().count()
+    comments = user.comment_set.all().count()
 
     context = {
         'bookings': bookings,
         'reviews': reviews,
+        'comments': comments,
     }
 
     return render(request, 'profile_app/profile_details.html', context)
