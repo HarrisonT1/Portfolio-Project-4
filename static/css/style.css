@@ -42,6 +42,10 @@ h1,h2 {
     padding: 0;
 }
 
+.yellow-star span {
+    color: gold;
+}
+
 /* Buttons */
 
 #cta button {
