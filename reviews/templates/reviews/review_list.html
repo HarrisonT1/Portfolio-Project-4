@@ -35,8 +35,8 @@
 <nav>
     <ul class="pagination justify-content-center">
         {% if page_obj.has_previous %}
-            <li class="page-item">
-                <a href="?page={{ page_obj.previous_page_number }}" class="page-link">Previous</a>
+            <li class="page-item me-2">
+                <a href="?page={{ page_obj.has_previous_number }}" class="button-colour">Previous</a>
             </li>
         {% endif %}
 
@@ -47,8 +47,8 @@
         </li>
 
         {% if page_obj.has_next %}
-            <li>
-                <a href="?page={{ page_obj.next_page_number }}" class="page-link">Next</a>
+            <li class="page-item ms-2">
+                <a href="?page={{ page_obj.next_page_number }}" class="button-colour">Next</a>
             </li>
         {% endif %}
     </ul>
