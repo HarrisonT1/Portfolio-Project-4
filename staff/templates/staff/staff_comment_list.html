@@ -1,75 +1,65 @@
-<div>
-    <h2>All Comments</h2>
-    <table>
-        <tr>
-            <th>User</th>
-            <th>Comment</th>
-            <th>Status</th>
-        </tr>
-        {% for comment in comments %}
-            <tr>
-                <td>{{ comment.user }}</td>
-                <td>{{ comment.comment|truncatechars:20 }}</td>
-                <td>{{ comment.approved }}</td>
-                <td>
-                    <a href="">View</a>
-                </td>
-                <td>
-                    <a href="{% url 'approve_comment' comment.id %}">Approve</a>
-                </td>
-                <td>
-                    <a href="{% url 'deny_comment' comment.id %}">Deny</a>
-                </td>
+{% extends "base.html" %} {% block content %} {% load static %} {% include "navbar_2.html" %} {% include "staff_navbar.html"%}
 
-            </tr>
-        {% endfor %}
-    </table>
+<!-- Total comment -->
+<div class="container">
+    <div class="row">
+        <h2 class="text-center mt-5 mb-3">Comments</h2>
+        {% if comments %}
+        <div class="table-responsive mb-5 scroll-feature">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Review id</th>
+                        <th>Comment</th>
+                        <th>Approve</th>
+                        <th>Deny</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for comment in comments %}
+                        <tr>
+                            <td>{{ use.first_name }} {{ user.last_name }}</td>
+                            <td>{{ comment.review.id }}</td>
+                            <td>
+                                <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-{{ comment.id }}">Read</button>
+                            </td>
+                            <td>{{ booking.booking_id }}</td>
+                            <td>
+                                <a href="{% url 'approve_comment' comment.id %}">
+                                    <button class="button-colour" type="button">Approve</button>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{% url 'deny_comment' comment.id %}">
+                                    <button class="button-colour" type="button">Deny</button>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% for comment in comments %}
+            <div class="modal fade" id="commentModal-{{ comment.id}}" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Comments</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                         </div>
+                        <div class="modal-body">
+                            <p>{{ comment.comment }}</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
 </div>
 
-<div>
-    <h2>All Approved Comments</h2>
-    <table>
-        <tr>
-            <th>User</th>
-            <th>Comment</th>
-        </tr>
-        {% for comment in approved_comments %}
-            <tr>
-                <td>{{ comment.user }}</td>
-                <td>{{ comment.comment|truncatechars:20 }}</td>
-            </tr>
-        {% endfor %}
-    </table>
-</div>
-
-<div>
-    <h2>All Pending Comments</h2>
-    <table>
-        <tr>
-            <th>User</th>
-            <th>Comment</th>
-        </tr>
-        {% for comment in pending_comments %}
-            <tr>
-                <td>{{ comment.user }}</td>
-                <td>{{ comment.comment|truncatechars:20 }}</td>
-            </tr>
-        {% endfor %}
-    </table>
-</div>
-
-<div>
-    <h2>All Denied Comments</h2>
-    <table>
-        <tr>
-            <th>User</th>
-            <th>Comment</th>
-        </tr>
-        {% for comment in denied_comments %}
-            <tr>
-                <td>{{ comment.user }}</td>
-                <td>{{ comment.comment|truncatechars:20 }}</td>
-            </tr>
-        {% endfor %}
-    </table>
-</div>
+{% include "footer.html" %} {% endblock %}
