@@ -70,6 +70,10 @@ h1,h2 {
     font-family: 'orbitron', sans-serif;
 }
 
+.metrics a:hover {
+    color: #1395e0;
+}
+
 /* Buttons */
 
 #cta button {
@@ -179,12 +183,6 @@ nav {
 #create_review textarea {
     border: 2px green solid;
 }
-
-/* Profle */
-
-/* #personal-metrics a:hover {
-    color: #1395e0;
-} */
 
 /* Staff section */
 

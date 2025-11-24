@@ -62,9 +62,217 @@
                 </div>
             </div>
             {% endfor %}
+        </div>         
+        {% else %}
+        <p class="text-center">No reviews</p>
+        {% endif %}
+
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <h2 class="text-center mt-5 mb-3">Approved Reviews</h2>
+        {% if approved_reviews %}
+        <div class="table-responsive mb-5 scroll-feature">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Comments</th>
+                        <th></th>
+                        <th>View</th>
+                        <th>Approve</th>
+                        <th>Deny</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for review in approved_reviews %}
+                        <tr>
+                            <td>{{ user.first_name }} {{ user.last_name }}</td>
+                            <td>{{ review.comment|truncatechars:20 }}</td>
+                            <td>
+                                <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-{{ review.review_id }}">Read</button>
+                            </td>
+                            <td>
+                                <a href="">
+                                    <button class="button-colour" type="button">View</button>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{% url 'approve_review' review.id %}">
+                                    <button class="button-colour" type="button">Approve</button>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{% url 'deny_review' review.id %}">
+                                    <button class="button-colour" type="button">Deny</button>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% for review in approved_reviews %}
+            <div class="modal fade" id="commentModal-{{ review.review_id }}" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Review Comments</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                         </div>
+                        <div class="modal-body">
+                            <p>{{ review.comment }}</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
         </div>
+        {% else %}
+        <p class="text-center">No approved reviews</p>
         {% endif %}
     </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <h2 class="text-center mt-5 mb-3">Pending Reviews</h2>
+        {% if pending_reviews %}
+        <div class="table-responsive mb-5 scroll-feature">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Comments</th>
+                        <th></th>
+                        <th>View</th>
+                        <th>Approve</th>
+                        <th>Deny</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for review in pending_reviews %}
+                        <tr>
+                            <td>{{ user.first_name }} {{ user.last_name }}</td>
+                            <td>{{ review.comment|truncatechars:20 }}</td>
+                            <td>
+                                <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-{{ review.review_id }}">Read</button>
+                            </td>
+                            <td>
+                                <a href="">
+                                    <button class="button-colour" type="button">View</button>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{% url 'approve_review' review.id %}">
+                                    <button class="button-colour" type="button">Approve</button>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{% url 'deny_review' review.id %}">
+                                    <button class="button-colour" type="button">Deny</button>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% for review in pending_reviews %}
+            <div class="modal fade" id="commentModal-{{ review.review_id }}" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Review Comments</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                         </div>
+                        <div class="modal-body">
+                            <p>{{ review.comment }}</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="text-center">No pending reviews</p>
+        {% endif %}
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <h2 class="text-center mt-5 mb-3">Denied Reviews</h2>
+        {% if denied_reviews %}
+        <div class="table-responsive mb-5 scroll-feature">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Comments</th>
+                        <th></th>
+                        <th>View</th>
+                        <th>Approve</th>
+                        <th>Deny</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for review in denied_reviews %}
+                        <tr>
+                            <td>{{ user.first_name }} {{ user.last_name }}</td>
+                            <td>{{ review.comment|truncatechars:20 }}</td>
+                            <td>
+                                <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-{{ review.review_id }}">Read</button>
+                            </td>
+                            <td>
+                                <a href="">
+                                    <button class="button-colour" type="button">View</button>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{% url 'approve_review' review.id %}">
+                                    <button class="button-colour" type="button">Approve</button>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{% url 'deny_review' review.id %}">
+                                    <button class="button-colour" type="button">Deny</button>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% for review in denied_reviews %}
+            <div class="modal fade" id="commentModal-{{ review.review_id }}" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Review Comments</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                         </div>
+                        <div class="modal-body">
+                            <p>{{ review.comment }}</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="text-center">No denied reviews</p>
+        {% endif %}
+    </div>
+
 </div>
 
 {% include "footer.html" %} {% endblock %}
