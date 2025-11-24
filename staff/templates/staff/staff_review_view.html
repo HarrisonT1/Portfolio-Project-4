@@ -1,6 +1,53 @@
-<div>
-    <h2>Review by {{ review.user.username }}</h2>
-    <p>Rating: {{ review.star_Rating }}</p>
-    <p>Comment: {{ review.comment }}</p>
-    <p>Created on: {{ review.created_at }}</p>
+{% extends "base.html" %} {% block content %} {% load static %} {% include "navbar_2.html" %}
+
+<div class="container d-flex flex-column justify-content-center align-items-center text-center">
+    <div class="row col-12 col-md-7">
+        <h2 class="mt-5">Review</h2>
+        <div class="review-card" class="container align-items-center text-center">
+            <div class="row gap-5 mt-5 mb-5 d-flex justify-content-center">
+                <div class="card col-6">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ user.first_name }} {{ user.last_name }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted yellow-star">
+                        {% if review.star_rating == 1 %}
+                        <span><i class="fa-solid fa-star"></i></span>
+                        {% elif review.star_rating == 2 %}
+                        <span><i class="fa-solid fa-star"></i></span>
+                        <span><i class="fa-solid fa-star"></i></span>
+                        <span><i class="fa-solid fa-star"></i></span>
+                        {% elif review.star_rating == 3 %}
+                        <span><i class="fa-solid fa-star"></i></span>
+                        <span><i class="fa-solid fa-star"></i></span>
+                        <span><i class="fa-solid fa-star"></i></span>
+                        {% elif review.star_rating == 4 %}
+                        <span><i class="fa-solid fa-star"></i></span>
+                        <span><i class="fa-solid fa-star"></i></span>
+                        <span><i class="fa-solid fa-star"></i></span>
+                        <span><i class="fa-solid fa-star"></i></span>
+                        {% else %}
+                        <span><i class="fa-solid fa-star"></i></span>
+                        <span><i class="fa-solid fa-star"></i></span>
+                        <span><i class="fa-solid fa-star"></i></span>
+                        <span><i class="fa-solid fa-star"></i></span>
+                        <span><i class="fa-solid fa-star"></i></span>
+                        {% endif %}
+                        </h6>
+                        <p class="card-text">{{ review.comment }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <a href="{% url 'approve_review' review.id %}">
+            <button class="button-colour" type="button">Approve</button>
+        </a>
+    </div>
+    <div>
+        <a href="{% url 'deny_review' review.id %}">
+            <button class="button-colour" type="button">Deny</button>
+        </a>
+    </div>
 </div>
+
+{% include "footer.html" %} {% endblock %}
