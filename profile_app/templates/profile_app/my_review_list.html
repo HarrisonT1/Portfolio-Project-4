@@ -23,18 +23,18 @@
                                 <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-{{ review.id }}">Read</button>
                             </td>
                             <td>
-                                <a href="{% url 'review_view' review.id %}">
-                                    <button class="button-colour" type="button">View</button>
+                                <a href="{% url 'review_view' review.id %}" class="button-colour">
+                                    View
                                 </a>
                             </td>
                             <td>
-                                <a href="{% url 'review_cancel' review.id %}" class="cancel-btn">
-                                    <button class="button-colour" type="button">Cancel</button>
+                                <a href="{% url 'review_cancel' review.id %}" class="cancel-btn button-colour">
+                                    Cancel
                                 </a>
                             </td>
                             <td>
-                                <a href="{% url 'review_edit' review.id %}">
-                                    <button class="button-colour" type="button">Edit</button>
+                                <a href="{% url 'review_edit' review.id %}" class="button-colour">
+                                    Edit
                                 </a>
                             </td>
                         </tr>

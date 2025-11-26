@@ -35,18 +35,18 @@
                             </td>
                             <td>{{ booking.booking_id }}</td>
                             <td>
-                                <a href="{% url 'booking_details' booking.booking_id %}">
-                                    <button class="button-colour" type="button">View</button>
+                                <a href="{% url 'booking_details' booking.booking_id %}" class="button-colour">
+                                    View
                                 </a>
                             </td>
                             <td>
-                                <a href="{% url 'booking_cancel' booking.booking_id %}">
-                                    <button class="button-colour cancel-btn" type="button">Cancel</button>
+                                <a href="{% url 'booking_cancel' booking.booking_id %}" class="cancel-btn button-colour">
+                                    Cancel
                                 </a>
                             </td>
                             <td>
-                                <a href="{% url 'booking_edit' booking.booking_id %}">
-                                    <button class="button-colour" type="button">Edit</button>
+                                <a href="{% url 'booking_edit' booking.booking_id %}" class="button-colour">
+                                    Edit
                                 </a>
                             </td>
                         </tr>

@@ -14,6 +14,13 @@ body {
     flex-direction: column;
 }
 
+td a {
+    padding: 0;
+    display: block;
+    text-align: center;
+    max-width: 80px;
+}
+
 .row {
     max-width: 90%;
     margin: auto;
@@ -91,6 +98,7 @@ h1,h2 {
     border: #37d81b 2px solid;
     color: #000000;
     border-radius: 10px;
+    text-decoration: none;
 }
 
 .button-colour:hover {
