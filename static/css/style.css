@@ -61,7 +61,10 @@ h1,h2 {
     position: fixed;
     top: 70px;
     justify-content: center;
+    text-align: center;
     z-index: 1000;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 /* metric cards */
