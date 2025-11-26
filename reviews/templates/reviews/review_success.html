@@ -1,16 +1,5 @@
 {% extends "base.html" %} {% block content %} {% load static %} {% include "navbar_2.html" %}
 
-
-{% if messages %}
-    <div>
-        {% for message in messages %}
-        <div class="alert {% if messages.tags %}alert-{{ message.tags }}{% else %}alert-info{% endif %}">
-            {{ message }}
-        </div>
-        {% endfor %}
-    </div>
-{% endif %}
-
 <div class="container d-flex flex-column justify-content-center align-items-center text-center">
     <div class="row col-12 col-md-7">
         <h2 class="mt-5">Your Review Was A Success!</h2>

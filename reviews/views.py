@@ -14,7 +14,8 @@ def CreateReview(request):
     user = request.user
     # Need to add profile editability **************
     if not user.first_name or not user.last_name:
-        messages.error(request, "Please add a first and last name to your profile before continuing")
+        if not messages.get_messages(request):
+            messages.error(request, "Please add a first and last name to your profile before continuing")
         next_url = reverse('create_review')
         edit_profile_url = f"{reverse('edit_profile')}?next={next_url}"
         return redirect(edit_profile_url)
