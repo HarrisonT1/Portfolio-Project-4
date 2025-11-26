@@ -12,7 +12,6 @@ from .models import Review
 @login_required
 def CreateReview(request):
     user = request.user
-    # Need to add profile editability **************
     if not user.first_name or not user.last_name:
         if not messages.get_messages(request):
             messages.error(request, "Please add a first and last name to your profile before continuing")
