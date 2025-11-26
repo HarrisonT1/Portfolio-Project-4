@@ -40,9 +40,9 @@
 </nav>
 
 {% if messages %}
-    <div>
+    <div id="messages">
         {% for message in messages %}
-        <div class="alert {% if messages.tags %}alert-{{ message.tags }}{% else %}alert-info{% endif %}">
+        <div class="alert {% if message.tags %}alert-{{ message.tags }}{% else %}alert-info{% endif %} alert-dismissible fade show">
             {{ message }}
         </div>
         {% endfor %}

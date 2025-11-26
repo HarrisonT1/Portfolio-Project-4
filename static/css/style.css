@@ -57,6 +57,13 @@ h1,h2 {
     color: gold;
 }
 
+#messages {
+    position: fixed;
+    top: 70px;
+    justify-content: center;
+    z-index: 1000;
+}
+
 /* metric cards */
 
 .metrics .card {
