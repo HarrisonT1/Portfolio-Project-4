@@ -65,4 +65,71 @@
     </div>
 </div>
 
-{% include "footer.html" %} {% endblock %}
+<!-- Awaiting approval -->
+
+<div class="container">
+    <div class="row">
+        <h2 class="text-center mt-5 mb-5">Awaiting approval reviews</h2>
+        {% if awaiting_approval_reviews %}
+        <div class="table-responsive mb-5">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Comment</th>
+                        <th>View</th>
+                        <th>Cancel</th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for review in awaiting_approval_reviews %}
+                        <tr>
+                            <td>{{ review.user.first_name }} {{ review.user.last_name }}</td>
+                            <td>
+                                <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-{{ review.id }}">Read</button>
+                            </td>
+                            <td>
+                                <a href="{% url 'review_view' review.id %}" class="button-colour">
+                                    View
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{% url 'review_cancel' review.id %}" class="cancel-btn button-colour">
+                                    Cancel
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{% url 'review_edit' review.id %}" class="button-colour">
+                                    Edit
+                                </a>
+                            </td>
+                        </tr>
+
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% for review in awaiting_approval_reviews %}
+            <div class="modal fade" id="commentModal-{{ review.id }}" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Review Comment</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                         </div>
+                        <div class="modal-body">
+                            <p>{{ review.comment }}</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% include "footer.html" %} {% endblock %} 
