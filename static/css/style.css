@@ -216,12 +216,16 @@ nav {
     color: grey;
 }
 
-.stars input:hover,
-.stars input:checked ~ label i {
-    font-size: 3rem;
-    color: gold;
+.stars label:hover i,
+.stars label:hover ~ label i {
+    color: rgb(255, 217, 0);
+    font-size: 4rem;
 }
 
+.stars input:checked ~ label i {
+    font-size: 4rem;
+    color: rgb(255, 217, 0);
+}
 
 
 /* Staff section */
