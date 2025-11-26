@@ -26,6 +26,12 @@ class BookingForm(forms.ModelForm):
             })
         }
 
+    def clean_number_of_people(self):
+        number = self.cleaned_data.get('number_of_people')
+        if number < 1:
+            raise forms.ValidationError("Number of people must be at least 1")
+        return number
+
 
 class OrderForm(forms.ModelForm):
     class Meta:

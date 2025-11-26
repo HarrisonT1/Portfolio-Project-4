@@ -10,6 +10,9 @@
                 <div>
                     {{ field }}
                 </div>
+                <div class="text-danger">
+                    {{ field.errors }}
+                </div>
             </div>
         {% endfor %}
         <div class="text-center">
