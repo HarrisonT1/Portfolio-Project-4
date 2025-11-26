@@ -202,6 +202,28 @@ nav {
     border: 2px green solid;
 }
 
+.stars {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.stars input {
+    display: none;
+}
+
+.stars label i {
+    font-size: 3rem;
+    color: grey;
+}
+
+.stars input:hover,
+.stars input:checked ~ label i {
+    font-size: 3rem;
+    color: gold;
+}
+
+
+
 /* Staff section */
 
 /* staff nav */
