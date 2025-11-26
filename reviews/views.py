@@ -25,7 +25,10 @@ def CreateReview(request):
             review = form.save(commit=False)
             review.user = request.user
             review.save()
+            messages.success(request, "Your review was a successs!")
             return redirect('review_success', review_id=review.id)
+        else:
+            messages.error(request, "Your review has failed, please try again")
     else:
         form = ReviewForm()
 
