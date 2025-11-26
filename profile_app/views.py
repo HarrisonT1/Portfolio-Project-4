@@ -44,10 +44,9 @@ def BookingEdit(request, booking_id):
 
     if request.method == 'POST':
         if form.is_valid():
-            form.save()
-
-            # Add code to reset approval from staff member once staff app is created
-
+            updated_booking = form.save(commit=False)
+            updated_booking.approved = 'pending'
+            updated_booking.save()
             messages.success(request, "Your booking has successfully been updated and is awaiting staff approval!")
             return redirect('booking_list')
         else:
@@ -123,8 +122,10 @@ def review_edit(request, review_id):
 
     if request.method == 'POST':
         if form.is_valid():
+            update_review = form.save(commit=False)
+            update_review.approved = 'pending'
+            update_review.save()
             messages.success(request, "Your review has been updated, staff will check it for approval")
-            form.save()
             return redirect('my_review_list')
 
     context = {
