@@ -6,17 +6,18 @@
         </div>
         <div class="nav-footer col-lg-3 col-12 text-white hover-link">
             {% if user.is_staff %}
+            <ul>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{% url 'staff_dashboard' %}">Staff Dashboard</a>
                 </li>
             {% endif %}
-            <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'booking_create' %}">Make a Booking</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="{% url 'create_review' %}">Create a review</a>
-            </li>
-            <br>
+                <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'booking_create' %}">Make a Booking</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="{% url 'create_review' %}">Create a review</a>
+                </li>
+                <br>
             {% if user.is_authenticated %}
                 <li class="nav-item">
                 <a class="nav-link" href="{% url 'show_profile' %}">Profile</a>
@@ -34,6 +35,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'account_login' %}">Log In</a>
                 </li>
+            </ul>                   
             {% endif %}
         </div>
         <!-- social media links -->
