@@ -32,6 +32,7 @@ def BookingDetails(request, booking_id):
 def BookingCancel(request, booking_id):
     booking = get_object_or_404(Booking, booking_id=booking_id, user=request.user)
     booking.delete()
+    messages.warning(request, "Your booking has been cancelled")
     return redirect('booking_list')
 
 
@@ -82,7 +83,10 @@ def EditProfile(request):
         if form.is_valid():
             form.save()
             next_url = request.GET.get('next') or reverse('show_profile')
+            messages.success(request, "Your profile has successfully been updated")
             return redirect(next_url)
+        else:
+            messages.error(request, "Your profile could not be updated")
     else:
         form = EditProfileForm(instance=request.user)
 
@@ -107,6 +111,7 @@ def review_list(request):
 @login_required
 def review_cancel(request, review_id):
     review = get_object_or_404(Review, id=review_id, user=request.user)
+    messages.warning(request, "Your Review has been cancelled")
     review.delete()
     return redirect('my_review_list')
 
@@ -118,6 +123,7 @@ def review_edit(request, review_id):
 
     if request.method == 'POST':
         if form.is_valid():
+            messages.success(request, "Your review has been updated, staff will check it for approval")
             form.save()
             return redirect('my_review_list')
 
