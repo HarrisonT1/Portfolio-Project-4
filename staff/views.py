@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib import messages
@@ -9,8 +10,16 @@ from reviews.models import Review, Comment
 
 # Create your views here.
 
+# Staff access
+
+def staff_access(view_func):
+    is_staff_member = login_required(user_passes_test(lambda u: u.is_staff)(view_func))
+    return is_staff_member
+
 # STAFF DASHBOARD
 
+
+@staff_access
 def staff_dashboard(request):
     total_bookings = Booking.objects.count()
     future_bookings = Booking.objects.filter(booking_date__gte=date.today()).count()
@@ -38,6 +47,7 @@ def staff_dashboard(request):
 # BOOKING
 
 
+@staff_access
 def StaffBookingList(request):
     bookings = Booking.objects.all().order_by("-booking_date")
     approved_bookings = Booking.objects.filter(approved='approved').order_by("-booking_date")
@@ -54,6 +64,7 @@ def StaffBookingList(request):
     return render(request, 'staff/staff_booking_list.html', context)
 
 
+@staff_access
 def ApproveBooking(request, booking_id):
     booking = Booking.objects.filter(booking_id=booking_id).first()
     if not booking:
@@ -64,6 +75,7 @@ def ApproveBooking(request, booking_id):
     return redirect('staff_booking_list')
 
 
+@staff_access
 def DenyBooking(request, booking_id):
     booking = Booking.objects.filter(booking_id=booking_id).first()
     if not booking:
@@ -74,6 +86,7 @@ def DenyBooking(request, booking_id):
     return redirect('staff_booking_list')
 
 
+@staff_access
 def ViewBooking(request, booking_id):
     booking = get_object_or_404(Booking, booking_id=booking_id)
     return render(request, 'staff/staff_booking_view.html', {'booking': booking})
@@ -81,6 +94,7 @@ def ViewBooking(request, booking_id):
 # REVIEWS
 
 
+@staff_access
 def StaffReviewList(request):
     reviews = Review.objects.all()
     approved_reviews = Review.objects.filter(approved='approved')
@@ -97,6 +111,7 @@ def StaffReviewList(request):
     return render(request, 'staff/staff_review_list.html', context)
 
 
+@staff_access
 def ApproveReview(request, review_id):
     review = Review.objects.filter(id=review_id).first()
     if not review:
@@ -107,6 +122,7 @@ def ApproveReview(request, review_id):
     return redirect('staff_review_list')
 
 
+@staff_access
 def DenyReview(request, review_id):
     review = Review.objects.filter(id=review_id).first()
     if not review:
@@ -117,6 +133,7 @@ def DenyReview(request, review_id):
     return redirect('staff_review_list')
 
 
+@staff_access
 def ViewReview(request, review_id):
     review = Review.objects.filter(id=review_id).first()
     if not review:
@@ -128,6 +145,7 @@ def ViewReview(request, review_id):
 # COMMENTS
 
 
+@staff_access
 def comment_list(request):
     comments = Comment.objects.all()
     approved_comments = Comment.objects.filter(approved='approved')
@@ -144,6 +162,7 @@ def comment_list(request):
     return render(request, 'staff/staff_comment_list.html', context)
 
 
+@staff_access
 def approve_comment(request, comment_id):
     comment = Comment.objects.filter(id=comment_id).first()
     if not comment:
@@ -154,6 +173,7 @@ def approve_comment(request, comment_id):
     return redirect('staff_comment_list')
 
 
+@staff_access
 def deny_comment(request, comment_id):
     comment = Comment.objects.filter(id=comment_id).first()
     if not comment:
