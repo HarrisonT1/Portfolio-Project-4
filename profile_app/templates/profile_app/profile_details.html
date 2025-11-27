@@ -3,7 +3,7 @@
 <div class="container metrics">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-xl-4 mb-5 g-3 justify-content-center">
         <div class="col-12">
-            <h2 class="col-12 text-center mb-3">Hello {{ user.first_name }}</h2>
+            <h2 class="col-12 text-center mb-3">Hello {{ user.first_name|default:"User" }}</h2>
         </div>
         <div class="text-center col-12 mb-5">
             <a href="{% url 'edit_profile' %}" class="remove-decoration button-colour p-2">Edit Your profile</a>
