@@ -1,0 +1,311 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Orbitron:wght@400..900&display=swap');
+
+/* General styles */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    min-height: 120vh;
+    display: flex;
+    flex-direction: column;
+}
+
+td a {
+    padding: 0;
+    display: block;
+    text-align: center;
+    max-width: 80px;
+}
+
+.row {
+    max-width: 90%;
+    margin: auto;
+}
+
+.custom-font {
+    font-family: 'orbitron', sans-serif;
+}
+
+h1,h2 {
+    font-family: 'orbitron', sans-serif;
+}
+
+.text-white {
+    color: #EAEAEA;
+}
+
+.text-black a {
+    color: black;
+}
+
+.remove-decoration {
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.errorlist {
+    list-style: none;
+    color: red;
+    padding: 0;
+}
+
+.yellow-star span {
+    color: gold;
+}
+
+#messages {
+    position: fixed;
+    top: 70px;
+    justify-content: center;
+    text-align: center;
+    z-index: 1000;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* metric cards */
+
+.metrics .card {
+    width: 11rem;
+    height: 5rem;
+    border: #39FF14 solid 2px;
+    background-color: #37ff1465
+}
+
+.metrics .row .col {
+    flex: 0 0 auto;
+    max-width: 250px;
+    margin-left: 50px;
+}
+
+.metrics h5 {
+    font-size: 13px;
+    font-family: 'orbitron', sans-serif;
+}
+
+.metrics a:hover {
+    color: #1395e0;
+}
+
+/* Buttons */
+
+#cta button {
+    border-radius: 10px;
+    background-color:#39FF14 ;
+    border: none;
+    font-size: 1.2rem;
+    padding: 10px;
+    margin-top: 20px;
+    align-items: center;
+}
+
+.button-colour {
+    background-color: #39FF14 !important;
+    border: #37d81b 2px solid;
+    color: #000000;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+.button-colour:hover {
+    border: #1395e0 2px solid;
+    color: blue;
+}
+
+/* Navbar */
+
+#navbar1 {
+    position: absolute;
+    z-index: 1000;
+}
+
+.navbar-toggler {
+    background-color:#37d81b;
+}
+
+
+nav {
+    font-size: 1.3rem;
+}
+
+#navbar2 {
+    background-color: #000000;
+}
+
+#navbar2 a, #navbar1 a {
+    color: #37d81b;
+}
+
+#navbar2 .dropdown-menu {
+    background-color: black;
+}
+
+.dropdown-menu .dropdown-item:hover,
+.nav-item a:hover {
+    background-color: transparent;
+    color: #1395e0 !important;
+
+}
+
+.dropdown-menu {
+    border: none;
+    box-shadow: none;
+}
+
+.navbar-brand {
+    color: #37d81b !important;
+}
+
+/* Hero */
+
+#hero-image {
+    object-position: center center;
+    object-fit: cover;
+    max-height: 80vh;
+    overflow: hidden;
+}
+
+/* CTA */
+
+#cta h2 {
+    color: #37d81b;
+}
+
+/* Details section */
+
+#details-section i {
+    font-size: 4rem;
+}
+
+/* Review card */
+
+.review-card .card {
+    width: 18rem;
+    height: 20rem;
+    border: #39FF14 solid 2px;
+    background-color: #37ff1465;
+}
+
+/* Booking form */
+
+#booking_form input {
+    border-radius: 5px;
+}
+
+/* Review form */
+
+#create_review textarea {
+    border: 2px green solid;
+}
+
+.stars {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.stars input {
+    display: none;
+}
+
+.stars label i {
+    font-size: 3rem;
+    color: grey;
+}
+
+.stars label:hover i,
+.stars label:hover ~ label i {
+    color: rgb(255, 217, 0);
+    font-size: 4rem;
+}
+
+.stars input:checked ~ label i {
+    font-size: 4rem;
+    color: rgb(255, 217, 0);
+}
+
+
+/* Staff section */
+
+/* staff nav */
+
+#staff-navbar {
+    background-color: #000000;
+}
+
+#staff-navbar a, #navbar1 a {
+    color: #37d81b;
+}
+
+#staff-navbar .dropdown-menu {
+    background-color: black;
+}
+
+/* staff dashboard */
+
+
+
+/* Staff booking list */
+
+
+.scroll-feature {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+/* Footer */
+
+footer {
+    bottom: 0;
+    background-color: #121212;
+}
+
+
+
+footer .nav-footer, footer ul {
+    list-style: none;
+    color: white;
+}
+
+.home-link a {
+    color: #39FF14;
+    font-size: 1.6rem;
+    text-decoration: none;
+}
+
+.nav-link, .socials a, .details a {
+    text-decoration: none;
+    color: white;
+}
+
+.hover-link a:hover {
+    color: #00FFFF;
+}
+
+
+.details a {
+    color: white; 
+}
+
+#footer-container div {
+    margin-top: 30px;
+}
+
+
+@media (max-width: 450px) {
+    #navbar1 {
+        position: relative;
+        background-color: black !important;
+    }
+}
+@media (max-width: 991px) {
+    #navbar1 {
+        background: rgba(0, 0, 0, 0.65);
+        backdrop-filter: blur(6px);
+        z-index: 1000;
+
+    }
+}
