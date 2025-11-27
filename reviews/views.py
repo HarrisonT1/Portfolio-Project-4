@@ -54,7 +54,7 @@ def review_list(request):
 @login_required
 def review_view(request, review_id):
     review = get_object_or_404(Review, id=review_id, user=request.user)
-    comments = review.comments.all().order_by('-created_at')
+    comments = review.comments.filter(approved="approved").order_by('-created_at')
 
     if request.method == 'POST':
         form = CommentForm(request.POST)
@@ -62,7 +62,9 @@ def review_view(request, review_id):
             comment = form.save(commit=False)
             comment.user = request.user
             comment.review = review
+            comment.approved = 'pending'
             comment.save()
+            messages.success(request, "Your comment has been made and is waiting approval from staff.")
             return redirect('review_view', review_id=review.id)
     else:
         form = CommentForm()
@@ -74,3 +76,4 @@ def review_view(request, review_id):
     }
 
     return render(request, 'profile_app/review_view.html', context)
+ 
