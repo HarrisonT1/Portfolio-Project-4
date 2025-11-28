@@ -12,6 +12,7 @@ body {
     min-height: 120vh;
     display: flex;
     flex-direction: column;
+    font-family: 'inter', sans-serif;
 }
 
 td a {
