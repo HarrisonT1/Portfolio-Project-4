@@ -53,7 +53,7 @@ def review_list(request):
 
 @login_required
 def review_view(request, review_id):
-    review = get_object_or_404(Review, id=review_id, user=request.user)
+    review = get_object_or_404(Review, id=review_id)
     comments = review.comments.filter(approved="approved").order_by('-created_at')
 
     if request.method == 'POST':
@@ -76,4 +76,3 @@ def review_view(request, review_id):
     }
 
     return render(request, 'profile_app/review_view.html', context)
- 

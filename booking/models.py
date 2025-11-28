@@ -46,29 +46,29 @@ class Booking(models.Model):
         return f"{self.first_name} {self.last_name} booked for {self.booking_time} on {self.booking_date}"
 
 
-class Menu(models.Model):
-    name = models.CharField(max_length=100)
-    price = models.DecimalField(max_digits=5, decimal_places=2)
+# class Menu(models.Model):
+#     name = models.CharField(max_length=100)
+#     price = models.DecimalField(max_digits=5, decimal_places=2)
 
-    def __str__(self):
-        return f"{self.name} - ${self.price}"
-
-
-class Order(models.Model):
-    booking = models.ForeignKey(Booking, on_delete=models.CASCADE, related_name='orders')
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    def total_price(self):
-        return sum(item.menu_item.price * item.quantity for item in self.order_items.all())
-
-    def __str__(self):
-        return f"Booking - {self.booking}"
+#     def __str__(self):
+#         return f"{self.name} - ${self.price}"
 
 
-class OrderItem(models.Model):
-    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='order_items')
-    menu_item = models.ForeignKey(Menu, on_delete=models.CASCADE)
-    quantity = models.PositiveIntegerField(default=1)
+# class Order(models.Model):
+#     booking = models.ForeignKey(Booking, on_delete=models.CASCADE, related_name='orders')
+#     created_at = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
-        return f"{self.quantity} X {self.menu_item.name}"
+#     def total_price(self):
+#         return sum(item.menu_item.price * item.quantity for item in self.order_items.all())
+
+#     def __str__(self):
+#         return f"Booking - {self.booking}"
+
+
+# class OrderItem(models.Model):
+#     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='order_items')
+#     menu_item = models.ForeignKey(Menu, on_delete=models.CASCADE)
+#     quantity = models.PositiveIntegerField(default=1)
+
+#     def __str__(self):
+#         return f"{self.quantity} X {self.menu_item.name}"
