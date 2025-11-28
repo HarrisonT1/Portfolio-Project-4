@@ -209,7 +209,7 @@ nav {
 
 /* Review form */
 
-#create_review textarea {
+.green-textbox textarea {
     border: 2px green solid;
 }
 
