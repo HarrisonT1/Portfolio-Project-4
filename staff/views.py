@@ -72,6 +72,7 @@ def ApproveBooking(request, booking_id):
         return redirect('staff_booking_list')
     booking.approved = 'approved'
     booking.save()
+    messages.success(request, "Booking accepted")
     return redirect('staff_booking_list')
 
 
@@ -83,6 +84,7 @@ def DenyBooking(request, booking_id):
         return redirect('staff_booking_list')
     booking.approved = 'denied'
     booking.save()
+    messages.error(request, "Booking denied")
     return redirect('staff_booking_list')
 
 
@@ -119,6 +121,7 @@ def ApproveReview(request, review_id):
         return redirect('staff_review_list')
     review.approved = 'approved'
     review.save()
+    messages.success(request, "Review accepted")
     return redirect('staff_review_list')
 
 
@@ -130,6 +133,7 @@ def DenyReview(request, review_id):
         return redirect('staff_review_list')
     review.approved = 'denied'
     review.save()
+    messages.error(request, "Review denied")
     return redirect('staff_review_list')
 
 
@@ -170,6 +174,7 @@ def approve_comment(request, comment_id):
         return redirect('staff_comment_list')
     comment.approved = 'approved'
     comment.save()
+    messages.success(request, "Comment accepted")
     return redirect('staff_comment_list')
 
 
@@ -181,4 +186,5 @@ def deny_comment(request, comment_id):
         return redirect('staff_comment_list')
     comment.approved = 'denied'
     comment.save()
+    messages.error(request, "Comment denied")
     return redirect('staff_comment_list')

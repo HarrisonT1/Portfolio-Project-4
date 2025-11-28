@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Booking, Menu, Order, OrderItem
+from .models import Booking
 from django_summernote.admin import SummernoteModelAdmin
 
 # Register your models here.
@@ -12,18 +12,18 @@ class BookingAdmin(admin.ModelAdmin):
     list_filter = ('booking_date',)
 
 
-@admin.register(Menu)
-class MenuAdmin(admin.ModelAdmin):
-    list_display = ('name', 'price')
-    search_fields = ('name',)
+# @admin.register(Menu)
+# class MenuAdmin(admin.ModelAdmin):
+#     list_display = ('name', 'price')
+#     search_fields = ('name',)
 
 
-# Inspiried by stackoverflow post
-class OverItemInline(admin.TabularInline):
-    model = OrderItem
-    extra = 0
+# # Inspiried by stackoverflow post
+# class OverItemInline(admin.TabularInline):
+#     model = OrderItem
+#     extra = 0
 
-@admin.register(Order)
-class OrderAdmin(admin.ModelAdmin):
-    list_display = ('booking', 'created_at', 'total_price',)
-    inlines = [OverItemInline]
+# @admin.register(Order)
+# class OrderAdmin(admin.ModelAdmin):
+#     list_display = ('booking', 'created_at', 'total_price',)
+#     inlines = [OverItemInline]

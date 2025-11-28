@@ -1,8 +1,8 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import BookingForm, OrderForm, OrderItemFormSet
-from .models import Booking, Order, Menu
+from .forms import BookingForm
+from .models import Booking
 
 # Create your views here.
 

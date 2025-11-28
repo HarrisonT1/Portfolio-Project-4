@@ -1,6 +1,6 @@
 from django.forms import inlineformset_factory
 from django import forms
-from .models import Booking, Menu, Order, OrderItem
+from .models import Booking
 
 
 class BookingForm(forms.ModelForm):
@@ -33,17 +33,17 @@ class BookingForm(forms.ModelForm):
         return number
 
 
-class OrderForm(forms.ModelForm):
-    class Meta:
-        model = OrderItem
-        fields = ['menu_item', 'quantity']
+# class OrderForm(forms.ModelForm):
+#     class Meta:
+#         model = OrderItem
+#         fields = ['menu_item', 'quantity']
 
 
-# Inspiried by stackoverflow post
-OrderItemFormSet = inlineformset_factory(
-    Order,
-    OrderItem,
-    form=OrderForm,
-    extra=5,
-    can_delete=True,
-)
+# # Inspiried by stackoverflow post
+# OrderItemFormSet = inlineformset_factory(
+#     Order,
+#     OrderItem,
+#     form=OrderForm,
+#     extra=5,
+#     can_delete=True,
+# )
