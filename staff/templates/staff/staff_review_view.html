@@ -38,13 +38,13 @@
         </div>
     </div>
     <div class="mb-3">
-        <a href="{% url 'approve_review' review.id %}">
-            <button class="button-colour" type="button">Approve</button>
+        <a href="{% url 'approve_review' review.id %}" class="button-colour">
+            Approve
         </a>
     </div>
     <div>
-        <a href="{% url 'deny_review' review.id %}">
-            <button class="button-colour" type="button cancel-btn">Deny</button>
+        <a href="{% url 'deny_review' review.id %}" class="button-colour cancel-btn">
+            Deny
         </a>
     </div>
 </div>

@@ -11,13 +11,13 @@
         <p>Comments - {{ booking.comments }}</p>
     </div>
         <div class="mb-3">
-        <a href="{% url 'approve_booking' booking.booking_id %}">
-            <button class="button-colour" type="button">Approve</button>
+        <a href="{% url 'approve_booking' booking.booking_id %}" class="button-colour">
+            Approve
         </a>
     </div>
     <div>
-        <a href="{% url 'deny_booking' booking.booking_id %}">
-            <button class="button-colour" type="button cancel-btn">Deny</button>
+        <a href="{% url 'deny_booking' booking.booking_id %}" class="button-colour">
+            Deny
         </a>
     </div>
 </div>
