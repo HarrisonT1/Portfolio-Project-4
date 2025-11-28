@@ -7,7 +7,7 @@
                 <div class="card col-6">
                     <div class="card-body">
                         <h5 class="card-title">{{ user.first_name }} {{ user.last_name }}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted yellow-star">
+                        <div class="card-subtitle mb-2 text-muted yellow-star">
                         {% if review.star_rating == 1 %}
                         <span><i class="fa-solid fa-star"></i></span>
                         {% elif review.star_rating == 2 %}
@@ -29,7 +29,7 @@
                         <span><i class="fa-solid fa-star"></i></span>
                         <span><i class="fa-solid fa-star"></i></span>
                         {% endif %}
-                        </h6>
+                        </div>
                         <p class="card-text">{{ review.comment }}</p>
                     </div>
                 </div>
