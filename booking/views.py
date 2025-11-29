@@ -30,24 +30,3 @@ def CreateBooking(request):
 def BookingSuccess(request, booking_id):
     booking = get_object_or_404(Booking, booking_id=booking_id, user=request.user)
     return render(request, 'booking/booking_success.html', {'booking': booking})
-
-
-# @login_required
-# def food_order(request, booking_id):
-#     booking = get_object_or_404(Booking, booking_id=booking_id)
-#     order, created = Order.objects.get_or_create(booking=booking)
-
-#     if request.method == 'POST':
-#         formset = OrderItemFormSet(request.POST, instance=order)
-#         if formset.is_valid():
-#             formset.save()
-#             return redirect('booking_success')
-#     else:
-#         formset = OrderItemFormSet(instance=order)
-
-#     context = {
-#         'booking': booking,
-#         'formset': formset,
-#     }
-
-#     return render(request, 'booking/create_order.html', context)
