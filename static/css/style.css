@@ -239,12 +239,6 @@ nav {
     color: rgb(255, 217, 0);
 }
 
-/* comments */
-
-.comment-button {
-    bottom: 10;
-}
-
 
 /* Staff section */
 
@@ -261,9 +255,6 @@ nav {
 #staff-navbar .dropdown-menu {
     background-color: black;
 }
-
-/* staff dashboard */
-
 
 
 /* Staff booking list */
