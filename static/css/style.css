@@ -110,6 +110,7 @@ h1,h2 {
     color: #000000;
     border-radius: 10px;
     text-decoration: none;
+    padding: 3px;
 }
 
 .button-colour:hover {
