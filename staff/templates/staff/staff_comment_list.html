@@ -19,7 +19,7 @@
                 <tbody>
                     {% for comment in comments %}
                         <tr>
-                            <td>{{ user.first_name }} {{ user.last_name }}</td>
+                            <td>{{ review.user.first_name }} {{ review.user.last_name }}</td>
                             <td>{{ comment.review.id }}</td>
                             <td>
                                 <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-comments-{{ comment.id }}">Read</button>
@@ -80,7 +80,7 @@
                 <tbody>
                     {% for comment in approved_comments %}
                         <tr>
-                            <td>{{ user.first_name }} {{ user.last_name }}</td>
+                            <td>{{ review.user.first_name }} {{ review.user.last_name }}</td>
                             <td>{{ comment.review.id }}</td>
                             <td>
                                 <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-approved-{{ comment.id }}">Read</button>
@@ -141,7 +141,7 @@
                 <tbody>
                     {% for comment in pending_comments %}
                         <tr>
-                            <td>{{ user.first_name }} {{ user.last_name }}</td>
+                            <td>{{ review.user.first_name }} {{ review.user.last_name }}</td>
                             <td>{{ comment.review.id }}</td>
                             <td>
                                 <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-pending-{{ comment.id }}">Read</button>
@@ -202,7 +202,7 @@
                 <tbody>
                     {% for comment in denied_comments %}
                         <tr>
-                            <td>{{ user.first_name }} {{ user.last_name }}</td>
+                            <td>{{ review.user.first_name }} {{ review.user.last_name }}</td>
                             <td>{{ comment.review.id }}</td>
                             <td>
                                 <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-denied-{{ comment.id }}">Read</button>

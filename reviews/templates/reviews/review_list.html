@@ -7,7 +7,7 @@
             {% for review in page_obj %}
                 <div class="card col-6 d-flex flex-column">
                     <div class="card-body flex-grow-1 d-flex flex-column">
-                        <h5 class="card-title">{{ user.first_name }} {{ user.last_name }}</h5>
+                        <h5 class="card-title">{{ review.user.first_name }} {{ review.user.last_name }}</h5>
                         <div class="card-subtitle mb-2 text-muted yellow-star">
                         {% if review.star_rating == 1 %}
                         <span><i class="fa-solid fa-star"></i></span>

@@ -20,7 +20,7 @@
                 <tbody>
                     {% for review in reviews %}
                         <tr>
-                            <td>{{ user.first_name }} {{ user.last_name }}</td>
+                            <td>{{ review.user.first_name }} {{ review.user.last_name }}</td>
                             <td>{{ review.comment|truncatechars:20 }}</td>
                             <td>
                                 <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-reviews-{{ review.id }}">Read</button>
@@ -89,7 +89,7 @@
                 <tbody>
                     {% for review in approved_reviews %}
                         <tr>
-                            <td>{{ user.first_name }} {{ user.last_name }}</td>
+                            <td>{{ review.user.first_name }} {{ review.user.last_name }}</td>
                             <td>{{ review.comment|truncatechars:20 }}</td>
                             <td>
                                 <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-approved-{{ review.id }}">Read</button>
@@ -157,7 +157,7 @@
                 <tbody>
                     {% for review in pending_reviews %}
                         <tr>
-                            <td>{{ user.first_name }} {{ user.last_name }}</td>
+                            <td>{{ review.user.first_name }} {{ review.user.last_name }}</td>
                             <td>{{ review.comment|truncatechars:20 }}</td>
                             <td>
                                 <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-pending-{{ review.id }}">Read</button>
@@ -225,7 +225,7 @@
                 <tbody>
                     {% for review in denied_reviews %}
                         <tr>
-                            <td>{{ user.first_name }} {{ user.last_name }}</td>
+                            <td>{{ review.user.first_name }} {{ review.user.last_name }}</td>
                             <td>{{ review.comment|truncatechars:20 }}</td>
                             <td>
                                 <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-denied-{{ review.id }}">Read</button>
