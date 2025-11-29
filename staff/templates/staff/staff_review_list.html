@@ -23,7 +23,7 @@
                             <td>{{ user.first_name }} {{ user.last_name }}</td>
                             <td>{{ review.comment|truncatechars:20 }}</td>
                             <td>
-                                <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-{{ review.review_id }}">Read</button>
+                                <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-reviews-{{ review.id }}">Read</button>
                             </td>
                             <td>
                                 <a href="{% url 'staff_review_view' review.id %}" class="button-colour">
@@ -45,7 +45,7 @@
                 </tbody>
             </table>
             {% for review in reviews %}
-            <div class="modal fade" id="commentModal-{{ review.review_id }}" tabindex="-1">
+            <div class="modal fade" id="commentModal-reviews-{{ review.id }}" tabindex="-1">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -92,7 +92,7 @@
                             <td>{{ user.first_name }} {{ user.last_name }}</td>
                             <td>{{ review.comment|truncatechars:20 }}</td>
                             <td>
-                                <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-{{ review.review_id }}">Read</button>
+                                <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-approved-{{ review.id }}">Read</button>
                             </td>
                             <td>
                                 <a href="{% url 'staff_review_view' review.id %}" class="button-colour">
@@ -114,7 +114,7 @@
                 </tbody>
             </table>
             {% for review in approved_reviews %}
-            <div class="modal fade" id="commentModal-{{ review.review_id }}" tabindex="-1">
+            <div class="modal fade" id="commentModal-approved-{{ review.id }}" tabindex="-1">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -160,7 +160,7 @@
                             <td>{{ user.first_name }} {{ user.last_name }}</td>
                             <td>{{ review.comment|truncatechars:20 }}</td>
                             <td>
-                                <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-{{ review.review_id }}">Read</button>
+                                <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-pending-{{ review.id }}">Read</button>
                             </td>
                             <td>
                                 <a href="{% url 'staff_review_view' review.id %}" class="button-colour">
@@ -182,7 +182,7 @@
                 </tbody>
             </table>
             {% for review in pending_reviews %}
-            <div class="modal fade" id="commentModal-{{ review.review_id }}" tabindex="-1">
+            <div class="modal fade" id="commentModal-pending-{{ review.id }}" tabindex="-1">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -228,7 +228,7 @@
                             <td>{{ user.first_name }} {{ user.last_name }}</td>
                             <td>{{ review.comment|truncatechars:20 }}</td>
                             <td>
-                                <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-{{ review.review_id }}">Read</button>
+                                <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-denied-{{ review.id }}">Read</button>
                             </td>
                             <td>
                                 <a href="{% url 'staff_review_view' review.id %}" class="button-colour">
@@ -250,7 +250,7 @@
                 </tbody>
             </table>
             {% for review in denied_reviews %}
-            <div class="modal fade" id="commentModal-{{ review.review_id }}" tabindex="-1">
+            <div class="modal fade" id="commentModal-denied-{{ review.id }}" tabindex="-1">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">

@@ -22,7 +22,7 @@
                             <td>{{ user.first_name }} {{ user.last_name }}</td>
                             <td>{{ comment.review.id }}</td>
                             <td>
-                                <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-{{ comment.id }}">Read</button>
+                                <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-comments-{{ comment.id }}">Read</button>
                             </td>
                             <td>
                                 <a href="{% url 'approve_comment' comment.id %}" class="button-colour">
@@ -39,7 +39,7 @@
                 </tbody>
             </table>
             {% for comment in comments %}
-            <div class="modal fade" id="commentModal-{{ comment.id}}" tabindex="-1">
+            <div class="modal fade" id="commentModal-comments-{{ comment.id }}" tabindex="-1">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -83,7 +83,7 @@
                             <td>{{ user.first_name }} {{ user.last_name }}</td>
                             <td>{{ comment.review.id }}</td>
                             <td>
-                                <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-{{ comment.id }}">Read</button>
+                                <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-approved-{{ comment.id }}">Read</button>
                             </td>
                             <td>
                                 <a href="{% url 'approve_comment' comment.id %}" class="button-colour">
@@ -100,7 +100,7 @@
                 </tbody>
             </table>
             {% for comment in approved_comments %}
-            <div class="modal fade" id="commentModal-{{ comment.id}}" tabindex="-1">
+            <div class="modal fade" id="commentModal-approved-{{ comment.id }}" tabindex="-1">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -144,7 +144,7 @@
                             <td>{{ user.first_name }} {{ user.last_name }}</td>
                             <td>{{ comment.review.id }}</td>
                             <td>
-                                <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-{{ comment.id }}">Read</button>
+                                <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-pending-{{ comment.id }}">Read</button>
                             </td>
                             <td>
                                 <a href="{% url 'approve_comment' comment.id %}" class="button-colour">
@@ -161,7 +161,7 @@
                 </tbody>
             </table>
             {% for comment in pending_comments %}
-            <div class="modal fade" id="commentModal-{{ comment.id}}" tabindex="-1">
+            <div class="modal fade" id="commentModal-pending-{{ comment.id }}" tabindex="-1">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -205,7 +205,7 @@
                             <td>{{ user.first_name }} {{ user.last_name }}</td>
                             <td>{{ comment.review.id }}</td>
                             <td>
-                                <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-{{ comment.id }}">Read</button>
+                                <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-denied-{{ comment.id }}">Read</button>
                             </td>
                             <td>
                                 <a href="{% url 'approve_comment' comment.id %}" class="button-colour">
@@ -222,7 +222,7 @@
                 </tbody>
             </table>
             {% for comment in denied_comments %}
-            <div class="modal fade" id="commentModal-{{ comment.id}}" tabindex="-1">
+            <div class="modal fade" id="commentModal-denied-{{ comment.id }}" tabindex="-1">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
