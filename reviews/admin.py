@@ -3,6 +3,7 @@ from .models import Review, Comment
 
 # Register your models here.
 
+
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
     list_display = ('id', 'user', 'star_rating', 'approved', 'created_at')
