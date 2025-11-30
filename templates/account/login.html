@@ -38,6 +38,7 @@
 
     <form class="login" method="POST" action="{% url 'account_login' %}">
       {% csrf_token %}
+      {{ form.non_field_errors }}
       {% for field in form %}
       {% if field.name == "remember" %}
       <div class="mt-3 mb-3">
