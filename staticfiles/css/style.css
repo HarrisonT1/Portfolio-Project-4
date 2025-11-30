@@ -12,6 +12,7 @@ body {
     min-height: 120vh;
     display: flex;
     flex-direction: column;
+    font-family: 'inter', sans-serif;
 }
 
 td a {
@@ -95,7 +96,6 @@ h1,h2 {
 
 #cta button {
     border-radius: 10px;
-    background-color:#39FF14 ;
     border: none;
     font-size: 1.2rem;
     padding: 10px;
@@ -109,12 +109,14 @@ h1,h2 {
     color: #000000;
     border-radius: 10px;
     text-decoration: none;
+    padding: 3px;
 }
 
 .button-colour:hover {
     border: #1395e0 2px solid;
     color: blue;
 }
+
 
 /* Navbar */
 
@@ -127,6 +129,11 @@ h1,h2 {
     background-color:#37d81b;
 }
 
+.navbar-nav ul {
+    padding: 0;
+    margin: 0;
+}
+
 
 nav {
     font-size: 1.3rem;
@@ -137,7 +144,7 @@ nav {
 }
 
 #navbar2 a, #navbar1 a {
-    color: #37d81b;
+    color: #1395e0;
 }
 
 #navbar2 .dropdown-menu {
@@ -147,7 +154,7 @@ nav {
 .dropdown-menu .dropdown-item:hover,
 .nav-item a:hover {
     background-color: transparent;
-    color: #1395e0 !important;
+    color: #37d81b !important;
 
 }
 
@@ -157,7 +164,12 @@ nav {
 }
 
 .navbar-brand {
-    color: #37d81b !important;
+    color: #1395e0;
+    font-size: 1.75rem !important;
+}
+
+.navbar-brand:hover {
+    color:#37d81b !important;
 }
 
 /* Hero */
@@ -172,7 +184,7 @@ nav {
 /* CTA */
 
 #cta h2 {
-    color: #37d81b;
+    color: #1395e0;
 }
 
 /* Details section */
@@ -198,7 +210,7 @@ nav {
 
 /* Review form */
 
-#create_review textarea {
+.green-textbox textarea {
     border: 2px green solid;
 }
 
@@ -236,16 +248,13 @@ nav {
     background-color: #000000;
 }
 
-#staff-navbar a, #navbar1 a {
+#staff-navbar a {
     color: #37d81b;
 }
 
 #staff-navbar .dropdown-menu {
     background-color: black;
 }
-
-/* staff dashboard */
-
 
 
 /* Staff booking list */
