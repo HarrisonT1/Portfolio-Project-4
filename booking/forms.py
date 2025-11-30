@@ -29,5 +29,3 @@ class BookingForm(forms.ModelForm):
         if number < 1:
             raise forms.ValidationError("Number of people must be at least 1")
         return number
-
-
