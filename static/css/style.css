@@ -118,6 +118,13 @@ h1,h2 {
     color: blue;
 }
 
+.text-border {
+    text-shadow: 
+    0 0 1px rgb(255, 255, 255),
+    0 0 2px rgb(255, 255, 255);
+
+}
+
 /* Navbar */
 
 #navbar1 {
