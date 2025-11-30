@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import RegexValidator
 from django.contrib.auth.models import User
 from .utils import create_id
 
@@ -12,10 +13,13 @@ class Booking(models.Model):
         ('denied', 'denied'),
     ]
 
+    limit_letters = RegexValidator(
+        r'^[a-zA-Z]+$', 'You may only use characters for this field')
+
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="bookings")
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
+    first_name = models.CharField(max_length=50, validators=[limit_letters])
+    last_name = models.CharField(max_length=50, validators=[limit_letters])
     email = models.EmailField()
     booking_date = models.DateField()
     booking_time = models.TimeField()
