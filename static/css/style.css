@@ -96,7 +96,6 @@ h1,h2 {
 
 #cta button {
     border-radius: 10px;
-    background-color:#39FF14 ;
     border: none;
     font-size: 1.2rem;
     padding: 10px;
@@ -118,12 +117,6 @@ h1,h2 {
     color: blue;
 }
 
-.text-border {
-    text-shadow: 
-    0 0 1px rgb(255, 255, 255),
-    0 0 2px rgb(255, 255, 255);
-
-}
 
 /* Navbar */
 
@@ -151,7 +144,7 @@ nav {
 }
 
 #navbar2 a, #navbar1 a {
-    color: #37d81b;
+    color: #1395e0;
 }
 
 #navbar2 .dropdown-menu {
@@ -161,7 +154,7 @@ nav {
 .dropdown-menu .dropdown-item:hover,
 .nav-item a:hover {
     background-color: transparent;
-    color: #1395e0 !important;
+    color: #37d81b !important;
 
 }
 
@@ -171,12 +164,12 @@ nav {
 }
 
 .navbar-brand {
-    color: #37d81b;
+    color: #1395e0;
     font-size: 1.75rem !important;
 }
 
 .navbar-brand:hover {
-    color:#1395e0 !important;
+    color:#37d81b !important;
 }
 
 /* Hero */
@@ -191,7 +184,7 @@ nav {
 /* CTA */
 
 #cta h2 {
-    color: #37d81b;
+    color: #1395e0;
 }
 
 /* Details section */
@@ -255,7 +248,7 @@ nav {
     background-color: #000000;
 }
 
-#staff-navbar a, #navbar1 a {
+#staff-navbar a {
     color: #37d81b;
 }
 
