@@ -40,5 +40,6 @@ class BookingForm(forms.ModelForm):
     def clean_booking_time(self):
         input = self.cleaned_data["booking_time"]
         if not (time(9, 0) <= input <= time(17, 0)):
-            raise forms.ValidationError("You can only select a time within hours 9am-4pm")
+            raise forms.ValidationError(
+                "You can only select a time within hours 9am-4pm")
         return input

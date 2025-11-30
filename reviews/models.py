@@ -11,7 +11,8 @@ class Review(models.Model):
         ('denied', 'denied'),
     ]
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='reviews')
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='reviews')
     star_rating = models.IntegerField(
         choices=[(i, i) for i in range(1, 6)],
         default=5
@@ -25,7 +26,8 @@ class Review(models.Model):
     )
 
     def __str__(self):
-        return f"{self.user.first_name} {self.user.last_name} {self.star_rating}"
+        return (
+            f"{self.user.first_name} {self.user.last_name} {self.star_rating}")
 
 
 class Comment(models.Model):
@@ -35,7 +37,9 @@ class Comment(models.Model):
         ('denied', 'denied'),
     ]
 
-    review = models.ForeignKey(Review, on_delete=models.CASCADE, related_name='comments')
+    review = models.ForeignKey(
+        Review, on_delete=models.CASCADE,
+        related_name='comments')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     comment = models.TextField(max_length=250)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -47,4 +51,6 @@ class Comment(models.Model):
     )
 
     def __str__(self):
-        return f"{self.user.first_name} {self.user.last_name} comment on {self.review.id}"
+        return (
+            f"{self.user.first_name} {self.user.last_name} "
+            f" comment on {self.review.id}")

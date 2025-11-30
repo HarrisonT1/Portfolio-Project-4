@@ -3,13 +3,11 @@ from django.urls import reverse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.shortcuts import render
-from django.http import HttpResponse
 from django.utils import timezone
 from booking.models import Booking
 from booking.forms import BookingForm
 from reviews.forms import ReviewForm
-from reviews.models import Review, Comment
+from reviews.models import Review
 from .forms import EditProfileForm
 
 # Create your views here.
@@ -18,19 +16,24 @@ from .forms import EditProfileForm
 @login_required
 def BookingList(request):
     now = timezone.now()
-    bookings = Booking.objects.all().filter(user=request.user, booking_date__gte=now.date())
-    return render(request, 'profile_app/booking_list.html', {'bookings': bookings})
+    bookings = Booking.objects.all().filter(
+        user=request.user, booking_date__gte=now.date())
+    return render(
+        request, 'profile_app/booking_list.html', {'bookings': bookings})
 
 
 @login_required
 def BookingDetails(request, booking_id):
-    booking = get_object_or_404(Booking, booking_id=booking_id, user=request.user)
-    return render(request, 'profile_app/booking_details.html', {'booking': booking})
+    booking = get_object_or_404(
+        Booking, booking_id=booking_id, user=request.user)
+    return render(
+        request, 'profile_app/booking_details.html', {'booking': booking})
 
 
 @login_required
 def BookingCancel(request, booking_id):
-    booking = get_object_or_404(Booking, booking_id=booking_id, user=request.user)
+    booking = get_object_or_404(
+        Booking, booking_id=booking_id, user=request.user)
     booking.delete()
     messages.warning(request, "Your booking has been cancelled")
     return redirect('booking_list')
@@ -38,7 +41,8 @@ def BookingCancel(request, booking_id):
 
 @login_required
 def BookingEdit(request, booking_id):
-    booking = get_object_or_404(Booking, booking_id=booking_id, user=request.user)
+    booking = get_object_or_404(
+        Booking, booking_id=booking_id, user=request.user)
 
     form = BookingForm(request.POST or None, instance=booking)
 
@@ -47,10 +51,16 @@ def BookingEdit(request, booking_id):
             updated_booking = form.save(commit=False)
             updated_booking.approved = 'pending'
             updated_booking.save()
-            messages.success(request, "Your booking has successfully been updated and is awaiting staff approval!")
+            messages.success(
+                request,
+                "Your booking has successfully been updated "
+                "and is awaiting staff approval!")
             return redirect('booking_list')
         else:
-            messages.error(request, "Error updating your booking. Please review your changes and try again.")
+            messages.error(
+                request,
+                "Error updating your booking. "
+                "Please review your changes and try again.")
 
     context = {
         'form': form,
@@ -82,7 +92,9 @@ def EditProfile(request):
         if form.is_valid():
             form.save()
             next_url = request.GET.get('next') or reverse('show_profile')
-            messages.success(request, "Your profile has successfully been updated")
+            messages.success(
+                request,
+                "Your profile has successfully been updated")
             return redirect(next_url)
         else:
             messages.error(request, "Your profile could not be updated")
@@ -96,8 +108,10 @@ def EditProfile(request):
 def review_list(request):
     user = request.user
 
-    approved_reviews = Review.objects.filter(user=user, approved='approved').order_by('-created_at')
-    awaiting_approval_reviews = Review.objects.filter(user=user, approved='pending').order_by('-created_at')
+    approved_reviews = Review.objects.filter(
+        user=user, approved='approved').order_by('-created_at')
+    awaiting_approval_reviews = Review.objects.filter(
+        user=user, approved='pending').order_by('-created_at')
 
     context = {
         'approved_reviews': approved_reviews,
@@ -125,7 +139,10 @@ def review_edit(request, review_id):
             update_review = form.save(commit=False)
             update_review.approved = 'pending'
             update_review.save()
-            messages.success(request, "Your review has been updated, staff will check it for approval")
+            messages.success(
+                request,
+                "Your review has been updated,"
+                " staff will check it for approval")
             return redirect('my_review_list')
 
     context = {

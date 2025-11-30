@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from datetime import timedelta
 from .utils import create_id
 
 # Create your models here.
@@ -13,7 +12,8 @@ class Booking(models.Model):
         ('denied', 'denied'),
     ]
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="bookings")
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="bookings")
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.EmailField()
@@ -35,4 +35,6 @@ class Booking(models.Model):
     )
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name} booked for {self.booking_time} on {self.booking_date}"
+        return (
+            f"{self.first_name} {self.last_name}"
+            f"booked for {self.booking_time} on {self.booking_date}")

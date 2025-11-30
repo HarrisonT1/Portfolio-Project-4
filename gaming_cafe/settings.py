@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
-if os.path.isfile('env.py'):     # This file does not exist on the deployed version
+if os.path.isfile('env.py'):  # This file doesn't exist on the deployed version
     import env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -32,8 +32,7 @@ DEBUG = False
 ALLOWED_HOSTS = ['portfolio-project-4-pufu.onrender.com',
                  '.onrender.com',
                  'localhost',
-                 '.127.0.0.1',
-]
+                 '.127.0.0.1',]
 
 
 # Application definition

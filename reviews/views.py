@@ -14,7 +14,10 @@ def CreateReview(request):
     user = request.user
     if not user.first_name or not user.last_name:
         if not messages.get_messages(request):
-            messages.error(request, "Please add a first and last name to your profile before continuing")
+            messages.error(
+                request,
+                "Please add a first and last name to your "
+                "profile before continuing")
         next_url = reverse('create_review')
         edit_profile_url = f"{reverse('edit_profile')}?next={next_url}"
         return redirect(edit_profile_url)
@@ -42,7 +45,8 @@ def ReviewSuccess(request, review_id):
 
 
 def review_list(request):
-    reviews = Review.objects.filter(approved='approved').order_by('-star_rating')
+    reviews = Review.objects.filter(
+        approved='approved').order_by('-star_rating')
 
     paginator = Paginator(reviews, 6)
     page_number = request.GET.get('page')
@@ -54,7 +58,8 @@ def review_list(request):
 @login_required
 def review_view(request, review_id):
     review = get_object_or_404(Review, id=review_id)
-    comments = review.comments.filter(approved="approved").order_by('-created_at')
+    comments = review.comments.filter(
+        approved="approved").order_by('-created_at')
 
     if request.method == 'POST':
         form = CommentForm(request.POST)
@@ -64,7 +69,10 @@ def review_view(request, review_id):
             comment.review = review
             comment.approved = 'pending'
             comment.save()
-            messages.success(request, "Your comment has been made and is waiting approval from staff.")
+            messages.success(
+                request,
+                "Your comment has been made and is waiting"
+                " approval from staff.")
             return redirect('review_view', review_id=review.id)
     else:
         form = CommentForm()

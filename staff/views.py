@@ -12,7 +12,8 @@ from reviews.models import Review, Comment
 # Staff access
 
 def staff_access(view_func):
-    is_staff_member = login_required(user_passes_test(lambda u: u.is_staff)(view_func))
+    is_staff_member = login_required(
+        user_passes_test(lambda u: u.is_staff)(view_func))
     return is_staff_member
 
 # STAFF DASHBOARD
@@ -21,9 +22,11 @@ def staff_access(view_func):
 @staff_access
 def staff_dashboard(request):
     total_bookings = Booking.objects.count()
-    future_bookings = Booking.objects.filter(booking_date__gte=date.today()).count()
+    future_bookings = Booking.objects.filter(
+        booking_date__gte=date.today()).count()
     pending_bookings = Booking.objects.filter(approved='pending').count()
-    past_bookings = Booking.objects.filter(booking_date__lt=date.today()).count()
+    past_bookings = Booking.objects.filter(
+        booking_date__lt=date.today()).count()
     total_reviews = Review.objects.count()
     pending_reviews = Review.objects.filter(approved='pending').count()
     total_users = User.objects.count()
@@ -49,9 +52,12 @@ def staff_dashboard(request):
 @staff_access
 def StaffBookingList(request):
     bookings = Booking.objects.all().order_by("-booking_date")
-    approved_bookings = Booking.objects.filter(approved='approved').order_by("-booking_date")
-    pending_bookings = Booking.objects.filter(approved='pending').order_by("-booking_date")
-    denied_bookings = Booking.objects.filter(approved='denied').order_by("-booking_date")
+    approved_bookings = Booking.objects.filter(
+        approved='approved').order_by("-booking_date")
+    pending_bookings = Booking.objects.filter(
+        approved='pending').order_by("-booking_date")
+    denied_bookings = Booking.objects.filter(
+        approved='denied').order_by("-booking_date")
 
     context = {
         'bookings': bookings,
@@ -90,7 +96,8 @@ def DenyBooking(request, booking_id):
 @staff_access
 def ViewBooking(request, booking_id):
     booking = get_object_or_404(Booking, booking_id=booking_id)
-    return render(request, 'staff/staff_booking_view.html', {'booking': booking})
+    return render(
+        request, 'staff/staff_booking_view.html', {'booking': booking})
 
 # REVIEWS
 
