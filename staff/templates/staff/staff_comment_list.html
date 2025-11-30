@@ -3,7 +3,7 @@
 <!-- Total comment -->
 <div class="container">
     <div class="row">
-        <h2 class="text-center mt-5 mb-3">Comments</h2>
+        <h2 class="text-center mt-5 mb-3">All Comments</h2>
         {% if comments %}
         <div class="table-responsive mb-5 scroll-feature">
             <table class="table">
@@ -19,7 +19,7 @@
                 <tbody>
                     {% for comment in comments %}
                         <tr>
-                            <td>{{ review.user.first_name }} {{ review.user.last_name }}</td>
+                            <td>{{ comment.user.first_name }} {{ comment.user.last_name }}</td>
                             <td>{{ comment.review.id }}</td>
                             <td>
                                 <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-comments-{{ comment.id }}">Read</button>
@@ -64,7 +64,7 @@
 <!-- Approved comment -->
 <div class="container">
     <div class="row">
-        <h2 class="text-center mt-5 mb-3">Approved comments</h2>
+        <h2 class="text-center mt-5 mb-3">Approved Comments</h2>
         {% if approved_comments %}
         <div class="table-responsive mb-5 scroll-feature">
             <table class="table">
@@ -80,7 +80,7 @@
                 <tbody>
                     {% for comment in approved_comments %}
                         <tr>
-                            <td>{{ review.user.first_name }} {{ review.user.last_name }}</td>
+                            <td>{{ comment.user.first_name }} {{ comment.user.last_name }}</td>
                             <td>{{ comment.review.id }}</td>
                             <td>
                                 <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-approved-{{ comment.id }}">Read</button>
@@ -125,7 +125,7 @@
 <!-- Pending comment -->
 <div class="container">
     <div class="row">
-        <h2 class="text-center mt-5 mb-3">Pending comments</h2>
+        <h2 class="text-center mt-5 mb-3">Pending Comments</h2>
         {% if pending_comments %}
         <div class="table-responsive mb-5 scroll-feature">
             <table class="table">
@@ -141,7 +141,7 @@
                 <tbody>
                     {% for comment in pending_comments %}
                         <tr>
-                            <td>{{ review.user.first_name }} {{ review.user.last_name }}</td>
+                            <td>{{ comment.user.first_name }} {{ comment.user.last_name }}</td>
                             <td>{{ comment.review.id }}</td>
                             <td>
                                 <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-pending-{{ comment.id }}">Read</button>
@@ -186,7 +186,7 @@
 <!-- Denied comment -->
 <div class="container">
     <div class="row">
-        <h2 class="text-center mt-5 mb-3">Denied comments</h2>
+        <h2 class="text-center mt-5 mb-3">Denied Comments</h2>
         {% if denied_comments %}
         <div class="table-responsive mb-5 scroll-feature">
             <table class="table">
@@ -202,7 +202,7 @@
                 <tbody>
                     {% for comment in denied_comments %}
                         <tr>
-                            <td>{{ review.user.first_name }} {{ review.user.last_name }}</td>
+                            <td>{{ comment.user.first_name }} {{ comment.user.last_name }}</td>
                             <td>{{ comment.review.id }}</td>
                             <td>
                                 <button class="button-colour" data-bs-toggle="modal" data-bs-target="#commentModal-denied-{{ comment.id }}">Read</button>
