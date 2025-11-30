@@ -15,6 +15,9 @@ class BookingForm(forms.ModelForm):
             'comments',
             'number_of_people',
         ]
+        labels = {
+            'number_of_people': 'Number of people (including yourself)'
+        }
 
         widgets = {
             'booking_date': forms.DateInput(attrs={
