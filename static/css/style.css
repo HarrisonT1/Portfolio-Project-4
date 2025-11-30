@@ -68,6 +68,11 @@ h1,h2 {
     transform: translateX(-50%);
 }
 
+.remove-space {
+    margin: 0;
+    padding: 0;
+}
+
 /* metric cards */
 
 .metrics .card {
