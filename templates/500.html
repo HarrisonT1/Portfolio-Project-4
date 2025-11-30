@@ -1,11 +1,11 @@
 {% extends "base.html" %} {% block content %} {% load static %} {% include "navbar_2.html" %} {% include "messages.html" %}
 
 
-<div class="container-fluid mt-auto py-5 text-center d-flex align-items-center justify-content-center">
+<div class="container-fluid mt-auto pt-5 text-center d-flex align-items-center justify-content-center">
     <div class="row">
-        <h2>Sorry but something has gone wrong</h2>
-        <img src="{% static 'images/error-image.jpg' %}" alt="Picture of an out of an out of order arcade machine" class="img-fluid">
-        <p><a class="button-colour" href="{% url 'home' %}">Back to homepage</a></p>
+        <h2 class="mb-5">Sorry, something has gone wrong</h2>
+        <img src="{% static 'images/error-image.jpg' %}" alt="Picture of an out of an out of order arcade machine" class="img-fluid w-25 mx-auto">
+        <p class="mt-5 mb-5"><a class="button-colour" href="{% url 'home' %}">Back to homepage</a></p>
     </div>
 </div>
 
