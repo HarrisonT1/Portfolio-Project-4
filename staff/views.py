@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.core.exceptions import PermissionDenied
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
@@ -12,9 +13,16 @@ from reviews.models import Review, Comment
 # Staff access
 
 def staff_access(view_func):
-    is_staff_member = login_required(
-        user_passes_test(lambda u: u.is_staff)(view_func))
-    return is_staff_member
+    def wrapper(request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('account_login')
+
+        if not request.user.is_staff:
+            raise PermissionDenied
+
+        return view_func(request, *args, **kwargs)
+
+    return wrapper
 
 # STAFF DASHBOARD
 
