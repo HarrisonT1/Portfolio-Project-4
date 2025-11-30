@@ -1,5 +1,5 @@
 from django import forms
-from datetime import date, time
+from datetime import date, time, datetime
 from .models import Booking
 
 
@@ -41,8 +41,16 @@ class BookingForm(forms.ModelForm):
         return input
 
     def clean_booking_time(self):
-        input = self.cleaned_data["booking_time"]
-        if not (time(9, 0) <= input <= time(16, 0)):
+        input_time = self.cleaned_data["booking_time"]
+        input_date = self.cleaned_data["booking_date"]
+        now = datetime.now()
+
+        if not (time(9, 0) <= input_time <= time(16, 0)):
             raise forms.ValidationError(
                 "You can only select a time within hours 9am-4pm")
-        return input
+
+        if input_date == now.date() and input_time <= now.time():
+            raise forms.ValidationError(
+                "You cannot book in the past"
+            )
+        return input_time
