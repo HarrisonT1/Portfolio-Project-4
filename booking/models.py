@@ -19,7 +19,6 @@ class Booking(models.Model):
     email = models.EmailField()
     booking_date = models.DateField()
     booking_time = models.TimeField()
-    duration = models.DurationField(default=timedelta(hours=1), help_text="Length of stay")
     comments = models.TextField(blank=True)
     number_of_people = models.PositiveIntegerField()
     booking_id = models.CharField(

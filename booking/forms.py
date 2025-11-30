@@ -11,7 +11,6 @@ class BookingForm(forms.ModelForm):
             'email',
             'booking_date',
             'booking_time',
-            'duration',
             'comments',
             'number_of_people',
         ]
