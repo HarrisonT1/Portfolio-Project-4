@@ -129,7 +129,7 @@ h1,h2 {
     position: absolute;
     z-index: 1000;
     background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(6px);
+    color: white;
 }
 
 .navbar-toggler {
@@ -151,19 +151,13 @@ nav {
 }
 
 #navbar2 a, #navbar1 a {
-    color: #1395e0;
+    color: #ffffff;
 }
 
 #navbar2 .dropdown-menu {
     background-color: black;
 }
 
-.dropdown-menu .dropdown-item:hover,
-.nav-item a:hover {
-    background-color: transparent;
-    color: #1395e0 !important;
-
-}
 
 .dropdown-menu {
     border: none;
@@ -173,10 +167,6 @@ nav {
 .navbar-brand {
     color: #37d81b;
     font-size: 1.75rem !important;
-}
-
-.navbar-brand:hover {
-    color:#1395e0 !important;
 }
 
 /* Hero */
@@ -278,8 +268,6 @@ footer {
     bottom: 0;
     background-color: #121212;
 }
-
-
 
 footer .nav-footer, footer ul {
     list-style: none;
