@@ -10,27 +10,27 @@ urlpatterns = [
 
     path(
         'profile/edit_profile/',
-        views.EditProfile,
+        views.edit_profile,
         name='edit_profile'),
 
     # BOOKINGS
 
     path(
         'profile/bookings/',
-        views.BookingList,
+        views.booking_list,
         name='booking_list'),
 
     path(
         'profile/bookings/<str:booking_id>/',
-        views.BookingDetails,
+        views.booking_details,
         name='booking_details'),
 
     path('profile/bookings/<str:booking_id>/cancel/',
-         views.BookingCancel,
+         views.booking_cancel,
          name='booking_cancel'),
 
     path('profile/bookings/<str:booking_id>/edit/',
-         views.BookingEdit,
+         views.booking_edit,
          name='booking_edit'),
     # REVIEWS
     path(

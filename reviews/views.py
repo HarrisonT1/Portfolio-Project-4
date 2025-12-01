@@ -10,7 +10,7 @@ from .models import Review
 
 
 @login_required
-def CreateReview(request):
+def create_review(request):
     user = request.user
     if not user.first_name or not user.last_name:
         if not messages.get_messages(request):
@@ -39,7 +39,7 @@ def CreateReview(request):
 
 
 @login_required
-def ReviewSuccess(request, review_id):
+def review_success(request, review_id):
     review = Review.objects.get(id=review_id)
     return render(request, 'reviews/review_success.html', {'review': review})
 

@@ -4,11 +4,11 @@ from . import views  # import views.py from the current directory
 urlpatterns = [
     path(
         'booking/new/',
-        views.CreateBooking,
+        views.create_booking,
         name='booking_create'),
 
     path(
         'booking/success/<str:booking_id>/',
-        views.BookingSuccess,
+        views.booking_success,
         name='booking_success'),
 ]

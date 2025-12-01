@@ -8,7 +8,7 @@ from .models import Booking
 
 
 @login_required
-def CreateBooking(request):
+def create_booking(request):
     if request.method == 'POST':
         form = BookingForm(request.POST)
         if form.is_valid():
@@ -30,7 +30,7 @@ def CreateBooking(request):
 
 
 @login_required
-def BookingSuccess(request, booking_id):
+def booking_success(request, booking_id):
     booking = get_object_or_404(
         Booking, booking_id=booking_id, user=request.user)
     return render(

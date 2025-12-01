@@ -1,4 +1,3 @@
-
 from django.urls import reverse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
@@ -14,7 +13,7 @@ from .forms import EditProfileForm
 
 
 @login_required
-def BookingList(request):
+def booking_list(request):
     now = timezone.now()
     bookings = Booking.objects.all().filter(
         user=request.user, booking_date__gte=now.date())
@@ -23,7 +22,7 @@ def BookingList(request):
 
 
 @login_required
-def BookingDetails(request, booking_id):
+def booking_details(request, booking_id):
     booking = get_object_or_404(
         Booking, booking_id=booking_id, user=request.user)
     return render(
@@ -31,7 +30,7 @@ def BookingDetails(request, booking_id):
 
 
 @login_required
-def BookingCancel(request, booking_id):
+def booking_cancel(request, booking_id):
     booking = get_object_or_404(
         Booking, booking_id=booking_id, user=request.user)
     booking.delete()
@@ -40,7 +39,7 @@ def BookingCancel(request, booking_id):
 
 
 @login_required
-def BookingEdit(request, booking_id):
+def booking_edit(request, booking_id):
     booking = get_object_or_404(
         Booking, booking_id=booking_id, user=request.user)
 
@@ -86,7 +85,7 @@ def profile(request):
 
 
 @login_required
-def EditProfile(request):
+def edit_profile(request):
     if request.method == 'POST':
         form = EditProfileForm(request.POST, instance=request.user)
         if form.is_valid():

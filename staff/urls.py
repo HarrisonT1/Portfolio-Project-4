@@ -10,39 +10,39 @@ urlpatterns = [
     # BOOKINGS
     path(
         'staff/dashboard/booking_list/',
-        views.StaffBookingList,
+        views.staff_booking_list,
         name='staff_booking_list'),
     path(
         'staff/dashboard/booking_list/view/<str:booking_id>/',
-        views.ViewBooking,
+        views.view_booking,
         name='view_booking'),
     path(
         'staff/dashboard/booking_list/approve/<str:booking_id>/',
-        views.ApproveBooking,
+        views.approve_booking,
         name='approve_booking'),
     path(
         'staff/dashboard/booking_list/deny/<str:booking_id>/',
-        views.DenyBooking,
+        views.deny_booking,
         name='deny_booking'),
     # REVIEWS
     path(
         'staff/dashboard/review_list/',
-        views.StaffReviewList,
+        views.staff_review_list,
         name='staff_review_list'),
 
     path(
         'staff/dashboard/review_list/view/<int:review_id>/',
-        views.ViewReview,
+        views.view_review,
         name='staff_review_view'),
 
     path(
         'staff/dashboard/review_list/approve/<int:review_id>/',
-        views.ApproveReview,
+        views.approve_review,
         name='approve_review'),
 
     path(
         'staff/dashboard/review_list/deny/<int:review_id>/',
-        views.DenyReview,
+        views.deny_review,
         name='deny_review'),
     # COMMENTS
     path(
