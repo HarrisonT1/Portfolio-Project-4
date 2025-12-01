@@ -1,5 +1,6 @@
 from django.db import models
-from django.core.validators import RegexValidator
+from django.core.validators import (
+    RegexValidator, MinValueValidator, MaxValueValidator)
 from django.contrib.auth.models import User
 from .utils import create_id
 
@@ -24,7 +25,9 @@ class Booking(models.Model):
     booking_date = models.DateField()
     booking_time = models.TimeField()
     comments = models.TextField(blank=True)
-    number_of_people = models.PositiveIntegerField()
+    number_of_people = models.PositiveIntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(10)]
+    )
     booking_id = models.CharField(
         max_length=7,
         unique=True,
