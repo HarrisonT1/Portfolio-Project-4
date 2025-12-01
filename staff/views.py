@@ -58,7 +58,7 @@ def staff_dashboard(request):
 
 
 @staff_access
-def StaffBookingList(request):
+def staff_booking_list(request):
     bookings = Booking.objects.all().order_by("-booking_date")
     approved_bookings = Booking.objects.filter(
         approved='approved').order_by("-booking_date")
@@ -78,7 +78,7 @@ def StaffBookingList(request):
 
 
 @staff_access
-def ApproveBooking(request, booking_id):
+def approve_booking(request, booking_id):
     booking = Booking.objects.filter(booking_id=booking_id).first()
     if not booking:
         messages.error(request, "Booking not found")
@@ -90,7 +90,7 @@ def ApproveBooking(request, booking_id):
 
 
 @staff_access
-def DenyBooking(request, booking_id):
+def deny_booking(request, booking_id):
     booking = Booking.objects.filter(booking_id=booking_id).first()
     if not booking:
         messages.error(request, "Booking not found")
@@ -102,7 +102,7 @@ def DenyBooking(request, booking_id):
 
 
 @staff_access
-def ViewBooking(request, booking_id):
+def view_booking(request, booking_id):
     booking = get_object_or_404(Booking, booking_id=booking_id)
     return render(
         request, 'staff/staff_booking_view.html', {'booking': booking})
@@ -111,7 +111,7 @@ def ViewBooking(request, booking_id):
 
 
 @staff_access
-def StaffReviewList(request):
+def staff_review_list(request):
     reviews = Review.objects.all()
     approved_reviews = Review.objects.filter(approved='approved')
     pending_reviews = Review.objects.filter(approved='pending')
@@ -128,7 +128,7 @@ def StaffReviewList(request):
 
 
 @staff_access
-def ApproveReview(request, review_id):
+def approve_review(request, review_id):
     review = Review.objects.filter(id=review_id).first()
     if not review:
         messages.error(request, "Review not found")
@@ -140,7 +140,7 @@ def ApproveReview(request, review_id):
 
 
 @staff_access
-def DenyReview(request, review_id):
+def deny_review(request, review_id):
     review = Review.objects.filter(id=review_id).first()
     if not review:
         messages.error(request, "Review not found")
@@ -152,7 +152,7 @@ def DenyReview(request, review_id):
 
 
 @staff_access
-def ViewReview(request, review_id):
+def view_review(request, review_id):
     review = Review.objects.filter(id=review_id).first()
     if not review:
         messages.error(request, "Review not found")
