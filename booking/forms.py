@@ -23,9 +23,12 @@ class BookingForm(forms.ModelForm):
             'booking_date': forms.DateInput(attrs={
                 'type': 'date'
             }),
-            'booking_time': forms.TimeInput(attrs={
-                'type': 'time'
-            })
+            'booking_time': forms.TimeInput(
+                attrs={
+                    'type': 'time'
+                },
+                format='%H:%M'
+            ),
         }
 
     def clean_number_of_people(self):
